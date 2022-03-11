@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,10 +37,12 @@ public class Cliente {
 	private String nomeContatto;
 	private String cognomeContatto;
 	private String telefonoContatto;
+	@OneToOne
 	private Indirizzo sedeLegale;
+	@OneToOne
 	private Indirizzo sedeOperativa;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "cliente")
 	private List<Fattura> fatture;
 	
 }
