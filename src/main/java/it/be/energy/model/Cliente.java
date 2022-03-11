@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Cliente {
 	private Long id;
 	private String ragioneSociale;
 	private String partitaIva;
+	private TipoCliente tipoCliente;
 	private String email;
 	private LocalDate dataInserimento;
 	private LocalDate dataUltimoContatto;
@@ -36,6 +38,8 @@ public class Cliente {
 	private String telefonoContatto;
 	private Indirizzo sedeLegale;
 	private Indirizzo sedeOperativa;
+	
+	@OneToMany
 	private List<Fattura> fatture;
 	
 }
