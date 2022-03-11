@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Comune {
 
 	@Id
+	private Long id;
 	private Long codComune;
 	private String nome;
 	@ManyToOne
