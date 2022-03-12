@@ -25,7 +25,8 @@ public class Fattura {
 	private Integer anno;
 	private Date data;
 	private BigDecimal importo;
-	private String stato;
+	@ManyToOne
+	private StatoFattura stato;
 	
 	@ManyToOne
 	private Cliente cliente;
