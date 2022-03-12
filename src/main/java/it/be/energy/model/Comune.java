@@ -8,7 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import it.be.energy.service.ProvinciaService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +22,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comune {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long codComune;
+	private Long progressivo;
 	private String nome;
 	@ManyToOne
 	private Provincia provincia;
 	@OneToMany(mappedBy = "comune")
 	private List<Indirizzo> indirizzi;
+	
+	
+	
 	
 }
