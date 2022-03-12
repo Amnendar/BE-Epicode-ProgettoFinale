@@ -36,9 +36,9 @@ public class Runner implements CommandLineRunner {
 	}
 	
 	private void initProvincia() throws FileNotFoundException, IOException {
-		try (CSVReader csvReader = new CSVReader(new FileReader("province-italiane.csv"));) {
+		try (CSVReader csvReader = new CSVReader(new FileReader("province-italiane.csv"));){
 		    String[] values = null;
-		    csvReader.readNext();//nel csv abbiamo l intestazione, questo serve a saltare una riga
+		    csvReader.readNext();
 		    while ((values = csvReader.readNext()) != null) {
 		    	provinciarepo.save(new Provincia(values[0], values[1]));
 		    }
@@ -48,7 +48,7 @@ public class Runner implements CommandLineRunner {
 	private void initComune() throws FileNotFoundException, IOException {
 		try (CSVReader csvReader = new CSVReader(new FileReader("comuni-italiani.csv"));) {
 		    String[] values = null;
-		    csvReader.readNext();//nel csv abbiamo l intestazione, questo serve a saltare una riga
+		    csvReader.readNext();
 		    while ((values = csvReader.readNext()) != null) {
 		    	comunerepo.save(comuneservice.newComune(values[1], values[2], values[3]));
 		    }
