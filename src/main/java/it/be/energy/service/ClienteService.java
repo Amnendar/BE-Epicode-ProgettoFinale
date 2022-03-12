@@ -1,5 +1,7 @@
 package it.be.energy.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,8 +100,60 @@ public class ClienteService {
 		return clienterepo.findAllByOrderBySedeLegaleComuneProvincia(pageable);
 	}
 	
+	//filtri
+	
+	//find all clienti con fatturato maggiore uguale di
+	public Page<Cliente> findByFatturatoAnnualeGreaterThanEqual(BigDecimal fatturato, Pageable pageable){
+		return clienterepo.findByFatturatoAnnualeGreaterThanEqual(fatturato, pageable);
+	}
 	
 	
+	//find all clienti con fatturato minore uguale di
+		public Page<Cliente> findByFatturatoAnnualeLessThanEqual(BigDecimal fatturato, Pageable pageable){
+			return clienterepo.findByFatturatoAnnualeLessThanEqual(fatturato, pageable);
+	}
+		
+	//find all clienti con fatturato tra 	
+	public Page<Cliente> findByFatturatoAnnualeBetween(BigDecimal iniziale, BigDecimal finale, Pageable pageable ){
+			return clienterepo.findByFatturatoAnnualeBetween(iniziale, finale, pageable);
+	}
+	
+	
+	//find clienti con data inserimento dopo di
+	public Page<Cliente> findByDataInserimentoGreaterThanEqual(LocalDate data, Pageable pageable){
+		return clienterepo.findByDataInserimentoGreaterThanEqual(data, pageable);
+	}
+	
+	//find clienti con data inserimento prima di
+	public Page<Cliente> findByDataInserimentoLessThanEqual(LocalDate data, Pageable pageable){
+		return clienterepo.findByDataInserimentoLessThanEqual(data, pageable);
+	}
+	
+	//find clienti con data inserimento tra
+	public Page<Cliente> findByDataInserimentoBetween(LocalDate inizio, LocalDate fine, Pageable pageable){
+		return clienterepo.findByDataInserimentoBetween(inizio, fine, pageable);
+	}
+	
+	
+	//find clienti con data ultimo contatto dopo di
+	public Page<Cliente> findByDataUltimoContattoGreaterThanEqual(LocalDate data, Pageable pageable){
+		return clienterepo.findByDataUltimoContattoGreaterThanEqual(data, pageable);
+	}
+		
+		//find clienti con data ultimo contatto prima di
+	public Page<Cliente> findByDataUltimoContattoLessThanEqual(LocalDate data, Pageable pageable){
+		return clienterepo.findByDataUltimoContattoLessThanEqual(data, pageable);
+	}
+		
+		//find clienti con data ultimo contatto tra
+	public Page<Cliente> findByDataUltimoContattoBetween(LocalDate inizio, LocalDate fine, Pageable pageable){
+		return clienterepo.findByDataUltimoContattoBetween(inizio, fine, pageable);
+	}
+	
+	
+	public Page<Cliente> findByRagioneSocialeLike(String nome, Pageable pageable){
+		return clienterepo.findByRagioneSocialeLike(nome, pageable);
+	}
 	
 	
 	
