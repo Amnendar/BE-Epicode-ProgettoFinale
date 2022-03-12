@@ -58,7 +58,7 @@ public class ClienteService {
 	}
 	
 	//get all clienti
-	public Page<Cliente> getAllClienti(Pageable pageable){
+	public Page<Cliente> findAllClienti(Pageable pageable){
 		return clienterepo.findAll(pageable);
 	}
 	
@@ -74,23 +74,28 @@ public class ClienteService {
 	}
 	
 	//find all clienti ordinati per nome
-	public Page<Cliente> getAllClientiOrderByName(Pageable pageable){
-		return clienterepo.findAllOrderByRagioneSocialeAsc(pageable);
+	public Page<Cliente> findAllClientiOrderByName(Pageable pageable){
+		return clienterepo.findAllByOrderByRagioneSocialeAsc(pageable);
 	}
 	
 	//find all client ordinati per fatturato annuale
-	public Page<Cliente> getAllClientiOrderByFatturatoAnnuale(Pageable pageable){
-		return clienterepo.findAllOrderByFatturatoAnnuleDesc(pageable);
+	public Page<Cliente> findAllClientiOrderByFatturatoAnnuale(Pageable pageable){
+		return clienterepo.findAllByOrderByFatturatoAnnualeDesc(pageable);
 	}
 	
 	//find all clienti ordinati per data di inserimento
-	public Page<Cliente> getAllClientiOrderByDataInserimento(Pageable pageable){
-		return clienterepo.findAllOrderByDataInserimento(pageable);
+	public Page<Cliente> findAllClientiOrderByDataInserimento(Pageable pageable){
+		return clienterepo.findAllByOrderByDataInserimento(pageable);
 	}
 	
 	//find all clienti ordiniati per ultimo contatto
-	public Page<Cliente> getAllClientiOrderByDataUltimoContatto(Pageable pageable){
-		return clienterepo.findAllOrderByDataUltimoContatto(pageable);
+	public Page<Cliente> findAllClientiOrderByDataUltimoContatto(Pageable pageable){
+		return clienterepo.findAllByOrderByDataUltimoContatto(pageable);
+	}
+	
+	//find all clienti ordinati in base alla provincia della sede legale
+	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable){
+		return clienterepo.findAllByOrderBySedeLegaleComuneProvincia(pageable);
 	}
 	
 	

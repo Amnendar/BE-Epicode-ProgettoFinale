@@ -8,13 +8,15 @@ import it.be.energy.model.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
-	public Page<Cliente> getAllClienti(Pageable pageable);
+	public Page<Cliente> findAll(Pageable pageable);
 	
-	public Page<Cliente> findAllOrderByRagioneSocialeAsc(Pageable pageable);
+	public Page<Cliente> findAllByOrderByRagioneSocialeAsc(Pageable pageable);
 	
-	public Page<Cliente> findAllOrderByFatturatoAnnuleDesc(Pageable pageable);
+	public Page<Cliente> findAllByOrderByFatturatoAnnualeDesc(Pageable pageable);
 	
-	public Page<Cliente> findAllOrderByDataInserimento(Pageable pageable);
+	public Page<Cliente> findAllByOrderByDataInserimento(Pageable pageable);
 	
-	public Page<Cliente> findAllOrderByDataUltimoContatto(Pageable pageable);
+	public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable);
+	
+	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable);
 }
