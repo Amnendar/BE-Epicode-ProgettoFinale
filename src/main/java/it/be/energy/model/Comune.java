@@ -12,6 +12,9 @@ import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import it.be.energy.service.ProvinciaService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +31,10 @@ public class Comune {
 	private Long id;
 	private String nome;
 	@ManyToOne
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private Provincia provincia;
 	@OneToMany(mappedBy = "comune")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<Indirizzo> indirizzi;
 	
 	
