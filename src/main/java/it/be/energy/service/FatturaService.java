@@ -1,5 +1,7 @@
 package it.be.energy.service;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.FatturaException;
 import it.be.energy.model.Fattura;
+import it.be.energy.model.StatoFattura;
 import it.be.energy.repository.FatturaRepository;
 
 @Service
@@ -66,6 +69,27 @@ public class FatturaService {
 		}
 	}
 	
+	
+	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome){
+		return fatturarepo.findByClienteRagioneSocialeLike(pageable, nome);
+	}
+	
+	
+	public Page<Fattura> findByStato(Pageable pageable, StatoFattura stato){
+		return fatturarepo.findByStato(pageable, stato);
+	}
+	
+	public Page<Fattura> findByData(Pageable pageable, Date data){
+		return fatturarepo.findByData(pageable, data);
+	}
+	
+	public Page<Fattura> findByAnno(Pageable pageable, Integer anno){
+		return fatturarepo.findByAnno(pageable, anno);
+	}
+	
+	public Page<Fattura> findByImportoBetween(Pageable pageable, BigDecimal minimo, BigDecimal massimo){
+		return fatturarepo.findByImportoBetween(pageable, minimo, massimo);
+	}
 	
 	
 	
