@@ -21,6 +21,7 @@ public class Fattura {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private Long nFattura;
 	private Integer anno;
 	private Date data;

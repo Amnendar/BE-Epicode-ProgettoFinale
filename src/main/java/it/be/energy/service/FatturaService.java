@@ -62,6 +62,7 @@ public class FatturaService {
 			aggiorna.setData(fattura.getData());
 			aggiorna.setImporto(fattura.getImporto());
 			aggiorna.setStato(fattura.getStato());
+			aggiorna.setNFattura(fattura.getNFattura());
 			return fatturarepo.save(aggiorna);
 			}
 		else {
