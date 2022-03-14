@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.service.StatoFatturaService;
 
 @RestController
 @RequestMapping("/statofattura")
+@SecurityRequirement(name = "bearerAuth")
 public class StatoFatturaController {
 
 	@Autowired

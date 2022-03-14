@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Provincia;
 import it.be.energy.service.ProvinciaService;
 
 @RestController
 @RequestMapping("/provincia")
+@SecurityRequirement(name = "bearerAuth")
 public class ProvinciaController {
 
 	@Autowired

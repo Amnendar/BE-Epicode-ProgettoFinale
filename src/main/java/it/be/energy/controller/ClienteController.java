@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Cliente;
 import it.be.energy.service.ClienteService;
 
 @RestController
 @RequestMapping("/cliente")
+@SecurityRequirement(name = "bearerAuth")
 public class ClienteController {
 
 	@Autowired

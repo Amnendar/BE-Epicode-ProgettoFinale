@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Comune;
 import it.be.energy.service.ComuneService;
 
 @RestController
 @RequestMapping("/comune")
+@SecurityRequirement(name = "bearerAuth")
 public class ComuneController {
 
 	@Autowired
