@@ -12590,4 +12590,8 @@ Using generated security password: 67865d64-eb1f-4d75-9582-4ed13167c211
 ""2022-03-12 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 ""2022-03-12 [restartedMain] INFO  i.b.energy.EnergyServicesApplication - Started EnergyServicesApplication in 0.966 seconds (JVM running for 2228.41)
 ""2022-03-12 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+""2022-03-12 [RMI TCP Connection(83)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2022-03-12 [RMI TCP Connection(83)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-12 [RMI TCP Connection(83)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown initiated...
+""2022-03-12 [RMI TCP Connection(83)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown completed.
 "
