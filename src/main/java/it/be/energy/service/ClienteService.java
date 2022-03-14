@@ -27,7 +27,13 @@ public class ClienteService {
 	
 	//delete cliente
 	public void cancellaClienteById(Long id) {
+		Optional<Cliente> cancella = clienterepo.findById(id);
+		if(cancella.isPresent()) {
 		clienterepo.deleteById(id);
+		}
+		else {
+			throw new ClienteException("ERRORE! Nessun cliente con questo ID!");
+		}
 	}
 	
 	//update cliente
