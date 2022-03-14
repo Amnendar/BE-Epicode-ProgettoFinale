@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import it.be.energy.model.Comune;
 import it.be.energy.model.Provincia;
 import it.be.energy.service.ProvinciaService;
 
@@ -46,5 +47,17 @@ public class ProvinciaController {
 		
 	}
 	
+	@GetMapping("/cercapernome/{nome}")
+	@Operation
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	public ResponseEntity<Page<Provincia>> trova(@PathVariable String nome, Pageable pageable){
+		Page<Provincia> found = provinciaservice.trovaPerNome(pageable, nome);
+		if(found.isEmpty()) {
+			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
+		}
+		else {
+			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
+		}
+	}
 	
 }

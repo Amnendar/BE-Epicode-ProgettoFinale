@@ -15,4 +15,6 @@ public interface ProvinciaRepository extends JpaRepository<Provincia, Long> {
 	Optional<Provincia> findByCodiceProvincia(Long codice);
 	
 	Page<Provincia> findAll(Pageable pageable);
+	
+	Page<Provincia> findByNomeContaining(Pageable pageable, String nome);
 }

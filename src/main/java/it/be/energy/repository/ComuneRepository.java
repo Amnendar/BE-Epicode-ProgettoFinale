@@ -10,4 +10,5 @@ public interface ComuneRepository extends JpaRepository<Comune, Long> {
 
 	Page<Comune> findAll(Pageable pageable);
 	
+	Page<Comune> findByNomeContaining(String nome, Pageable pageable);
 }

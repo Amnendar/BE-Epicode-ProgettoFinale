@@ -44,6 +44,9 @@ public class ProvinciaService {
 		}
 	}
 	
+	public Page<Provincia> trovaPerNome(Pageable pageable, String nome){
+		return provinciarepo.findByNomeContaining(pageable, nome);
+	}
 	
 	
 }

@@ -33,6 +33,9 @@ public class ComuneService {
 		}
 	}
 	
+	public Page<Comune> trovaPerNome(String nome, Pageable pageable){
+		return comunerepo.findByNomeContaining(nome, pageable);
+	}
 	
 
 }

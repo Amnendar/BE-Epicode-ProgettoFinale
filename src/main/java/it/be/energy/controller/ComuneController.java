@@ -45,6 +45,18 @@ public class ComuneController {
 		
 	}
 	
+	@GetMapping("/cercapernome/{nome}")
+	@Operation
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	public ResponseEntity<Page<Comune>> trova(@PathVariable String nome, Pageable pageable){
+		Page<Comune> found = comuneservice.trovaPerNome(nome, pageable);
+		if(found.isEmpty()) {
+			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
+		}
+		else {
+			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
+		}
+	}
 	
 	
 }
