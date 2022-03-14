@@ -16,7 +16,7 @@ public class StatoFattura {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	private String stato;
 	
 	
