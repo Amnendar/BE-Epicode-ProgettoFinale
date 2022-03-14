@@ -48,7 +48,7 @@ public class FatturaController {
 	}
 	
 	
-	@PostMapping("/aggiungi")
+	@PostMapping("/inserisci")
 	@Operation
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Fattura> inserisciFattura(Fattura fattura){
@@ -57,7 +57,7 @@ public class FatturaController {
 	}
 	
 	
-	@PutMapping("/aggiorna/{id}")
+	@PutMapping("/modifica/{id}")
 	@Operation
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Fattura> aggiornaFattura(@PathVariable Long id, @RequestBody Fattura aggiorna){

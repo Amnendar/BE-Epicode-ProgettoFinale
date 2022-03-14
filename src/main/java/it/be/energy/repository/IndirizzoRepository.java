@@ -8,6 +8,6 @@ import it.be.energy.model.Indirizzo;
 
 public interface IndirizzoRepository extends JpaRepository<Indirizzo, Long> {
 
-	public Page<Indirizzo> mostraTuttiIndirizzi(Pageable pageable);
+	public Page<Indirizzo> findAll(Pageable pageable);
 	
 }
