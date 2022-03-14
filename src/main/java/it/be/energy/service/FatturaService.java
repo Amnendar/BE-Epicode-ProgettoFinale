@@ -71,7 +71,7 @@ public class FatturaService {
 	
 	
 	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome){
-		return fatturarepo.findByClienteRagioneSocialeLike(pageable, nome);
+		return fatturarepo.findByClienteRagioneSocialeContaining(pageable, nome);
 	}
 	
 	

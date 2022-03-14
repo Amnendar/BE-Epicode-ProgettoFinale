@@ -14,7 +14,7 @@ public interface FatturaRepository extends JpaRepository<Fattura, Long> {
 
 	public Page<Fattura> findAll(Pageable pageable);
 	
-	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome);
+	public Page<Fattura> findByClienteRagioneSocialeContaining(Pageable pageable, String nome);
 	
 	public Page<Fattura> findByStato(Pageable pageable, StatoFattura stato);
 	

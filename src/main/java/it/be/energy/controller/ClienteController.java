@@ -287,7 +287,7 @@ public class ClienteController {
 	@Operation(summary = "Cerca Clienti Con Nome Simile a", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClientePerRagioneSociale(@PathVariable String nome, Pageable pageable){
-		Page<Cliente> found = clienteservice.findByRagioneSocialeLike(nome, pageable);
+		Page<Cliente> found = clienteservice.findByRagioneSocialeContaining(nome, pageable);
 		if(found.isEmpty()) {
 			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
 		}
