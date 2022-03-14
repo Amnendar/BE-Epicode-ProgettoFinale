@@ -28,7 +28,7 @@ public class StatoFatturaController {
 	
 	
 	@GetMapping("/mostra")
-	@Operation()
+	@Operation(summary = "Mostra Stati", description = "Mostra tutti gli stati fattura presenti nel sistema")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<StatoFattura>> mostraStati(Pageable pageable){
 		Page<StatoFattura> all = statoservice.mostraStati(pageable);
@@ -41,7 +41,7 @@ public class StatoFatturaController {
 	}
 	
 	@GetMapping("/cerca/{id}")
-	@Operation()
+	@Operation(summary = "Cerca Stato", description = "Cerca uno stato fattura tramite chiave primaria")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<StatoFattura> trovaStatoFattura(@PathVariable Long id){
 		StatoFattura trovato = statoservice.trovaStato(id);
@@ -50,7 +50,7 @@ public class StatoFatturaController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation
+	@Operation(summary = "Inserisci Stato", description = "Inserisci un nuovo stato fattura nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<StatoFattura> inserisciStatoFattura(@RequestBody StatoFattura StatoFattura){
 		statoservice.creaNuovoStato(StatoFattura);
@@ -59,7 +59,7 @@ public class StatoFatturaController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation
+	@Operation(summary = "Modifica Stato", description = "Modifica uno stato fattura, cercandolo tramite chiave primaria")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<StatoFattura> aggiornaStatoFattura(@PathVariable Long id, @RequestBody StatoFattura aggiorna){
 		StatoFattura aggiornare = statoservice.aggiornaStato(id, aggiorna);
@@ -68,7 +68,7 @@ public class StatoFatturaController {
 	}
 	
 	@DeleteMapping("/cancella/{id}")
-	@Operation
+	@Operation(summary = "Cancella Stato", description = "Cancella uno stato fattura, rimuovendolo dal sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> cancellaStatoFattura(@PathVariable Long id){
 		statoservice.cancellaStato(id);
