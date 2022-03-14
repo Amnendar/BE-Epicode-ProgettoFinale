@@ -20,6 +20,8 @@ public class UserDetailsImpl implements UserDetails {
 	private Long id;
 	private String userName;
 	private String email;
+	private String nome;
+	private String cognome;
 	@JsonIgnore
 	private String password;
 	private boolean isEnabled;
@@ -29,11 +31,13 @@ public class UserDetailsImpl implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(Long id, String userName, String email, String password,
+	public UserDetailsImpl(Long id, String userName, String email,String nome, String cognome, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.userName = userName;
 		this.email = email;
+		this.nome =nome;
+		this.cognome = cognome;
 		this.password = password;
 		this.accountNonLocked = true;
 		this.accountNonExpired = true;
@@ -46,7 +50,7 @@ public class UserDetailsImpl implements UserDetails {
 	public static UserDetailsImpl build(User user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getRoleName().name())).collect(Collectors.toList());
-		return new UserDetailsImpl(user.getId(), user.getUserName(), user.getEmail(), user.getPassword(), authorities);
+		return new UserDetailsImpl(user.getId(), user.getUserName(), user.getEmail(),user.getNome(), user.getCognome(), user.getPassword(), authorities);
 	}
 
 	@Override

@@ -37,6 +37,8 @@ public class AddUserSpringRunner implements CommandLineRunner {
 		user.setUserName("admin");
 		user.setPassword(bCrypt.encode("admin"));
 		user.setEmail("admin@domain.com");
+		user.setNome("Admin");
+		user.setCognome("Admin");
 		user.setRoles(roles);
 		user.setActive(true);
 		
@@ -52,6 +54,8 @@ public class AddUserSpringRunner implements CommandLineRunner {
 		user2.setUserName("user");
 		user2.setPassword(bCrypt.encode("user"));
 		user2.setEmail("user@domain.com");
+		user2.setNome("User");
+		user2.setCognome("User");
 		user2.setRoles(roles2);
 		user2.setActive(true);
 		

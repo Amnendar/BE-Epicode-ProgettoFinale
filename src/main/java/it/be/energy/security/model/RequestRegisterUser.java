@@ -10,6 +10,8 @@ public class RequestRegisterUser {
 
 	private String userName;
 	private String password;
+	private String nome;
+	private String cognome;
 	private String mail;
 	private Set<String> roles = new HashSet<>();
 	
