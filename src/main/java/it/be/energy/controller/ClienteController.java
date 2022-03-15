@@ -54,7 +54,7 @@ public class ClienteController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema")
+	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTA: Bisogna inserire indirizzi gia esistenti!")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> inserisciCliente(@RequestBody Cliente cliente){
 		clienteservice.inserisciCliente(cliente);
@@ -63,11 +63,10 @@ public class ClienteController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente gia presente nel sistema")
+	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente gia presente nel sistema. NOTA: Se vogliamo gli stessi indirizzi, inserire SOLAMENTE gli ID corrispondenti. Le fatture rimangono comunque")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> aggiornaClienti(@PathVariable Long id, @RequestBody Cliente aggiorna){
-		Cliente aggiornare = clienteservice.getClienteById(id);
-		clienteservice.updateCliente(id, aggiornare);
+		clienteservice.updateCliente(id, aggiorna);
 		return new ResponseEntity<>(aggiorna, HttpStatus.ACCEPTED);
 	}
 	
