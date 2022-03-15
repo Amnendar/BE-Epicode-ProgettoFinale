@@ -46,7 +46,7 @@ public class IndirizzoService {
 			aggiorna.setComune(indirizzo.getComune());
 			aggiorna.setLocalita(indirizzo.getLocalita());
 			aggiorna.setVia(indirizzo.getVia());
-			return aggiorna;
+			return indirizzorepo.save(aggiorna);
 		}
 		else {
 			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");

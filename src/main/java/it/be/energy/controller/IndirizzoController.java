@@ -63,8 +63,7 @@ public class IndirizzoController {
 	@Operation
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Indirizzo> aggiornaIndirizzo(@PathVariable Long id, @RequestBody Indirizzo aggiorna){
-		Indirizzo aggiornare = indirizzoservice.trovaIndirizzo(id);
-		indirizzoservice.aggiornaIndirizzo(id, aggiornare);
+		indirizzoservice.aggiornaIndirizzo(id, aggiorna);
 		return new ResponseEntity<>(aggiorna, HttpStatus.ACCEPTED);
 	}
 	
