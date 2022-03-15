@@ -12,15 +12,20 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.FatturaException;
+import it.be.energy.exception.StatoFatturaException;
 import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.repository.FatturaRepository;
+import it.be.energy.repository.StatoFatturaRepository;
 
 @Service
 public class FatturaService {
 
 	@Autowired
 	FatturaRepository fatturarepo;
+	
+	@Autowired
+	StatoFatturaRepository statorepo;
 	
 	
 	public Page<Fattura> mostraFatture(Pageable pageable){
@@ -73,6 +78,16 @@ public class FatturaService {
 	}
 	
 	public List<Fattura> findyStato( Long idstato){
+		List<StatoFattura> prova = new ArrayList<>();
+		List<StatoFattura> tutti = statorepo.findAll();
+		for (StatoFattura statoFattura : tutti) {
+			if(statoFattura.getId().equals(idstato)) {
+				prova.add(statoFattura);
+			}
+		}
+		if(prova.isEmpty()) {
+			throw new StatoFatturaException("ERRORE! Nessuno stato presente con questo ID!");
+		}
 		List<Fattura> risultato = new ArrayList<>();
 		List<Fattura> tutte = fatturarepo.findAll();
 		for (Fattura fattura : tutte) {
@@ -92,9 +107,9 @@ public class FatturaService {
 	}
 	
 	
-	public Page<Fattura> findByStato(Pageable pageable, StatoFattura stato){
-		return fatturarepo.findByStato(pageable, stato);
-	}
+//	public Page<Fattura> findByStato(Pageable pageable, StatoFattura stato){
+//		return fatturarepo.findByStato(pageable, stato);
+//	}
 	
 	public Page<Fattura> findByData(Pageable pageable, Date data){
 		return fatturarepo.findByData(pageable, data);
