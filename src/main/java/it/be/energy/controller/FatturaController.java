@@ -56,9 +56,9 @@ public class FatturaController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Fattura", description = "Permette di inserire una nuova fattura presente nel sistema")
+	@Operation(summary = "Inserisci Fattura", description = "Permette di inserire una nuova fattura  nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<Fattura> inserisciFattura(Fattura fattura){
+	public ResponseEntity<Fattura> inserisciFattura(@RequestBody Fattura fattura){
 		fatturaservice.inserisciFattura(fattura);
 		return new ResponseEntity<>(fattura, HttpStatus.ACCEPTED);
 	}

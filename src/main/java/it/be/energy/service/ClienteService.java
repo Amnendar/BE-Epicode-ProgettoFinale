@@ -10,9 +10,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.ClienteException;
+import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Cliente;
 import it.be.energy.model.Fattura;
+import it.be.energy.model.Indirizzo;
 import it.be.energy.repository.ClienteRepository;
+import it.be.energy.repository.ComuneRepository;
+import it.be.energy.repository.IndirizzoRepository;
 
 @Service
 public class ClienteService {
@@ -20,10 +24,33 @@ public class ClienteService {
 	@Autowired
 	ClienteRepository clienterepo;
 	
+	@Autowired
+	ComuneRepository comunerepo;
+	
+	@Autowired
+	IndirizzoRepository indirizzorepo;
+	
 
 	//save cliente
 	public Cliente inserisciCliente(Cliente cliente) {
+		Long idindirizzo1 =cliente.getSedeLegale().getId();
+		Optional<Indirizzo> indirizzo1= indirizzorepo.findById(idindirizzo1);
+		if(indirizzo1.isPresent()) {
+			cliente.setSedeLegale(indirizzo1.get());
+			}
+		else {
+			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");
+		}
+		Long idindirizzo2 =cliente.getSedeOperativa().getId();
+		Optional<Indirizzo> indirizzo2= indirizzorepo.findById(idindirizzo2);
+		if(indirizzo2.isPresent()) {
+			cliente.setSedeOperativa(indirizzo2.get());
+			}
+		else {
+			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");
+			}
 		return clienterepo.save(cliente);
+		
 	}
 	
 	//delete cliente

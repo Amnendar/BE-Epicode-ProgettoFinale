@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Cliente;
+import it.be.energy.model.Fattura;
 import it.be.energy.service.ClienteService;
+import it.be.energy.service.FatturaService;
 
 @RestController
 @RequestMapping("/cliente")
@@ -31,6 +33,9 @@ public class ClienteController {
 
 	@Autowired
 	ClienteService clienteservice;
+	
+	@Autowired
+	FatturaService fatturaservice;
 	
 	//CRUD DI BASE
 	
@@ -295,17 +300,6 @@ public class ClienteController {
 			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 }

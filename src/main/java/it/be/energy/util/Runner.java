@@ -178,7 +178,7 @@ public class Runner implements CommandLineRunner {
 		fattura1.setNFattura((long) 1001);
 		fattura1.setStato(pagata);
 
-		fatturarepo.save(fattura1);
+		//fatturarepo.save(fattura1);
 
 		Fattura fattura2 = new Fattura();
 
@@ -190,7 +190,7 @@ public class Runner implements CommandLineRunner {
 		fattura2.setNFattura((long) 2300);
 		fattura2.setStato(pagata);
 
-		fatturarepo.save(fattura2);
+		//fatturarepo.save(fattura2);
 
 		Fattura fattura3 = new Fattura();
 
@@ -209,7 +209,7 @@ public class Runner implements CommandLineRunner {
 		List<Fattura> fatturecliente2 = new ArrayList<>();
 		fatturecliente2.add(fattura3);
 
-		fatturarepo.save(fattura3);
+		//fatturarepo.save(fattura3);
 
 		// creiamo i clienti
 
@@ -231,11 +231,12 @@ public class Runner implements CommandLineRunner {
 		cliente1.setTelefonoContatto("3337288321");
 		cliente1.setTipoCliente(TipoCliente.SAS);
 
-		clienterepo.save(cliente1);
+		//clienterepo.save(cliente1);
 		fattura1.setCliente(cliente1);
 		fattura2.setCliente(cliente1);
-		fatturarepo.save(fattura1);
-		fatturarepo.save(fattura2);
+		clienterepo.save(cliente1);
+		//fatturarepo.save(fattura1);
+		//fatturarepo.save(fattura2);
 
 		// cliente2
 
@@ -257,10 +258,10 @@ public class Runner implements CommandLineRunner {
 		cliente2.setTelefonoContatto("3827466898");
 		cliente2.setTipoCliente(TipoCliente.PA);
 
-		clienterepo.save(cliente2);
+		//clienterepo.save(cliente2);
 		fattura3.setCliente(cliente2);
-		fatturarepo.save(fattura3);
-
+		//fatturarepo.save(fattura3);
+		clienterepo.save(cliente2);
 	}
 	
 
