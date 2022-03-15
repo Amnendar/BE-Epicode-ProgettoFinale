@@ -17,7 +17,7 @@ import it.be.energy.service.ComuneService;
 
 
 @Component
-public class Runner implements CommandLineRunner {
+public class CsvReader implements CommandLineRunner {
 
 	@Autowired
 	ProvinciaRepository provinciarepo;
