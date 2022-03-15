@@ -50,7 +50,7 @@ public class FatturaController {
 	@GetMapping("/cerca/{id}")
 	@Operation(summary = "Cerca Fattura per id", description = "Cerca una fattura per chiave primaria")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Fattura> trovaFattura(Long id){
+	public ResponseEntity<Fattura> trovaFattura(@PathVariable Long id){
 		return new ResponseEntity<>(fatturaservice.getFatturaById(id), HttpStatus.ACCEPTED);
 	}
 	
