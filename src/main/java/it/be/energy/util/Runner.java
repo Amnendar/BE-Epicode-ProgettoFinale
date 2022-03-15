@@ -154,6 +154,16 @@ public class Runner implements CommandLineRunner {
 		indirizzo3.setCap("00110");
 
 		indirizzorepo.save(indirizzo3);
+		
+		Comune milano = comuneservice.trova((long) 1690);
+		Indirizzo indirizzo4 = new Indirizzo();
+		indirizzo4.setVia("Via Monte Napoleone");
+		indirizzo4.setCivico("19");
+		indirizzo4.setComune(milano);
+		indirizzo4.setLocalita("Milano");
+		indirizzo4.setCap("20330");
+		
+		indirizzorepo.save(indirizzo4);
 
 		// creiamo gli stati fattura
 
@@ -201,6 +211,28 @@ public class Runner implements CommandLineRunner {
 		fattura3.setImporto(new BigDecimal("300"));
 		fattura3.setNFattura((long) 101);
 		fattura3.setStato(pagata);
+		
+		
+		Fattura fattura4 = new Fattura();
+
+		Date data4 = sdf.parse("2021-02-02");
+
+		fattura4.setAnno(2021);
+		fattura4.setData(data4);
+		fattura4.setImporto(new BigDecimal("4500"));
+		fattura4.setNFattura((long) 101);
+		fattura4.setStato(nonpagata);
+		
+		Fattura fattura5 = new Fattura();
+
+		Date data5 = sdf.parse("2019-07-11");
+
+		fattura5.setAnno(2019);
+		fattura5.setData(data5);
+		fattura5.setImporto(new BigDecimal("5600"));
+		fattura5.setNFattura((long) 101);
+		fattura5.setStato(nonpagata);
+		
 
 		List<Fattura> fatturecliente1 = new ArrayList<>();
 		fatturecliente1.add(fattura1);
@@ -208,6 +240,10 @@ public class Runner implements CommandLineRunner {
 
 		List<Fattura> fatturecliente2 = new ArrayList<>();
 		fatturecliente2.add(fattura3);
+		
+		List<Fattura> fatturecliente3 = new ArrayList<>();
+		fatturecliente3.add(fattura4);
+		fatturecliente3.add(fattura5);
 
 		//fatturarepo.save(fattura3);
 
@@ -262,6 +298,30 @@ public class Runner implements CommandLineRunner {
 		fattura3.setCliente(cliente2);
 		//fatturarepo.save(fattura3);
 		clienterepo.save(cliente2);
+		
+		
+		Cliente cliente3 = new Cliente();
+		cliente3.setCognomeContatto("Abul Aziz Mua");
+		cliente3.setDataInserimento(LocalDate.parse("2005-04-22"));
+		cliente3.setDataUltimoContatto(LocalDate.parse("2022-01-01"));
+		cliente3.setEmail("sriwash@libero.it");
+		cliente3.setEmailContatto("mohamedzul@gmail.it");
+		cliente3.setFatturatoAnnuale(new BigDecimal("12000"));
+		cliente3.setFatture(fatturecliente3);
+		cliente3.setNomeContatto("Mohamed");
+		cliente3.setPartitaIva("SL12222433");
+		cliente3.setPec(null);
+		cliente3.setRagioneSociale("Sri Lanka Wash");
+		cliente3.setSedeLegale(indirizzo4);
+		cliente3.setSedeOperativa(indirizzo4);
+		cliente3.setTelefono("0592148433");
+		cliente3.setTelefonoContatto("3392856421");
+		cliente3.setTipoCliente(TipoCliente.SPA);
+
+		fattura4.setCliente(cliente3);
+		fattura5.setCliente(cliente3);
+		
+		clienterepo.save(cliente3);
 	}
 	
 
