@@ -1,7 +1,9 @@
 package it.be.energy.service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +70,20 @@ public class FatturaService {
 		else {
 			throw new FatturaException("ERRORE! Nessuna fattura con questo ID!");
 		}
+	}
+	
+	public List<Fattura> findyStato( Long idstato){
+		List<Fattura> risultato = new ArrayList<>();
+		List<Fattura> tutte = fatturarepo.findAll();
+		for (Fattura fattura : tutte) {
+			if(fattura.getStato().getId().equals(idstato)) {
+				risultato.add(fattura);
+			}
+		}
+		if(risultato.isEmpty()) {
+			throw new FatturaException("ERRORE! Nessuna fattura con questo stato!");
+		}
+		return risultato;
 	}
 	
 	

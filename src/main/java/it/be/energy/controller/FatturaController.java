@@ -2,6 +2,7 @@ package it.be.energy.controller;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Fattura;
-import it.be.energy.model.StatoFattura;
 import it.be.energy.service.FatturaService;
 
 @RestController
@@ -98,17 +98,12 @@ public class FatturaController {
 	}
 	
 	
-	@GetMapping("/cercaperstato")
+	@GetMapping("/cercaperstato/{idstato}")
 	@Operation(summary = "Cerca per Stato Fattura", description = "Mostra tutte le fatture con lo stato passato in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Page<Fattura>> trovaPerStato(@RequestBody StatoFattura stato, Pageable pageable){
-		Page<Fattura> found = fatturaservice.findByStato(pageable, stato);
-		if(found.hasContent()) {
-			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
-		}
-		else {
-			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
-		}
+	public ResponseEntity<List<Fattura>> trovaPerStato(@PathVariable Long idstato){
+		List<Fattura> found = fatturaservice.findyStato(idstato);
+		return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 	}
 	
 	
