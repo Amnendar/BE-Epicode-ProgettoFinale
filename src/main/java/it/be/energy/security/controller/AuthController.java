@@ -86,6 +86,8 @@ public class AuthController {
         }
 
         User userRegistrato = new User();
+        userRegistrato.setNome(registraUser.getNome());
+        userRegistrato.setCognome(registraUser.getCognome());
         userRegistrato.setUserName(registraUser.getUserName());
         userRegistrato.setEmail(registraUser.getMail());
         userRegistrato.setPassword(encoder.encode(registraUser.getPassword()));
