@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.ClienteException;
 import it.be.energy.model.Cliente;
+import it.be.energy.model.Fattura;
 import it.be.energy.repository.ClienteRepository;
 
 @Service
@@ -29,7 +30,14 @@ public class ClienteService {
 	public void cancellaClienteById(Long id) {
 		Optional<Cliente> cancella = clienterepo.findById(id);
 		if(cancella.isPresent()) {
-		clienterepo.deleteById(id);
+			Cliente cancellato = cancella.get();
+			for (Fattura fattura : cancellato.getFatture()) {
+				fattura.setCliente(null);
+			}
+			cancellato.setFatture(null);
+			cancellato.setSedeLegale(null);
+			cancellato.setSedeOperativa(null);
+			clienterepo.deleteById(id);
 		}
 		else {
 			throw new ClienteException("ERRORE! Nessun cliente con questo ID!");
