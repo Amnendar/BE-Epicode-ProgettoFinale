@@ -68,8 +68,7 @@ public class FatturaController {
 	@Operation(summary = "Aggiorna Fattura", description = "Permette di aggiornare i dati di una fattura gia presente nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Fattura> aggiornaFattura(@PathVariable Long id, @RequestBody Fattura aggiorna){
-		Fattura aggiornare = fatturaservice.getFatturaById(id);
-		fatturaservice.aggiornaFattura(id, aggiornare);
+		fatturaservice.aggiornaFattura(id, aggiorna);
 		return new ResponseEntity<>(aggiorna, HttpStatus.ACCEPTED);
 	}
 	
@@ -106,7 +105,7 @@ public class FatturaController {
 		return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 	}
 	
-	
+	//TODO Non funziona
 	@GetMapping("/cercaperdata/{data}")
 	@Operation(summary = "Cerca per Data Fattura", description = "Permette di cercare le fatture emesse in una determinata data")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
@@ -138,7 +137,7 @@ public class FatturaController {
 	@GetMapping("/cercaperimporti/{min}/{max}")
 	@Operation(summary = "Cerca per Importo Fattura", description = "Mostra le fatture in un  determinato range di importi")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Page<Fattura>> trovaPerImporti(@PathVariable BigDecimal min, BigDecimal max, Pageable pageable){
+	public ResponseEntity<Page<Fattura>> trovaPerImporti(@PathVariable BigDecimal min, @PathVariable BigDecimal max, Pageable pageable){
 		Page<Fattura> found = fatturaservice.findByImportoBetween(pageable, min, max);
 		if(found.hasContent()) {
 			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
