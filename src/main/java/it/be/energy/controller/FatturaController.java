@@ -105,7 +105,7 @@ public class FatturaController {
 		return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 	}
 	
-	//TODO Non funziona
+	//TODO mettere a localdate
 	@GetMapping("/cercaperdata/{data}")
 	@Operation(summary = "Cerca per Data Fattura", description = "Permette di cercare le fatture emesse in una determinata data")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
