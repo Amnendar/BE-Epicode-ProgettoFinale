@@ -21954,4 +21954,34 @@ Caused by: org.hibernate.MappingException: Could not determine type for: it.be.e
 ""2022-03-15 [restartedMain] INFO  i.b.energy.EnergyServicesApplication - Started EnergyServicesApplication in 1.526 seconds (JVM running for 4675.464)
 ""2022-03-15 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
 ""2022-03-15 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-03-15 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-03-15 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+""2022-03-15 [Thread-59] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-15 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown initiated...
+""2022-03-15 [Thread-59] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown completed.
+""2022-03-15 [restartedMain] INFO  i.b.energy.EnergyServicesApplication - Starting EnergyServicesApplication using Java 16.0.2 on DESKTOP-COCPM74 with PID 12892 (C:\Java\Workspace\EnergyServices\target\classes started by ant-1 in C:\Java\Workspace\EnergyServices)
+""2022-03-15 [restartedMain] INFO  i.b.energy.EnergyServicesApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-03-15 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-03-15 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 8 JPA repository interfaces.
+""2022-03-15 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+""2022-03-15 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-03-15 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.58]
+""2022-03-15 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-03-15 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 259 ms
+""2022-03-15 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-03-15 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-03-15 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Starting...
+""2022-03-15 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Start completed.
+""2022-03-15 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+""2022-03-15 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-03-15 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-15 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure any request
+""2022-03-15 [restartedMain] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+""2022-03-15 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+""2022-03-15 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+""2022-03-15 [restartedMain] INFO  i.b.energy.EnergyServicesApplication - Started EnergyServicesApplication in 1.441 seconds (JVM running for 5177.161)
+""2022-03-15 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+""2022-03-15 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-03-15 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-03-15 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 "
