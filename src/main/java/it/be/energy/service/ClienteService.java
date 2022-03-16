@@ -57,6 +57,9 @@ public class ClienteService {
 
 		clienterepo.save(cliente);
 		 List<Fattura> liste = cliente.getFatture();//salviamo le eventuali fatture passate assieme al cliente in input
+		 if(liste == null) { //se la lista fatture non esiste salviamo in questo punto il cliente, in quanto una lista a null crea conflitto con le righe successive
+			 return clienterepo.save(cliente);
+		 }
 		 for (Fattura fattura : liste) {
 			fattura.setCliente(cliente);
 		}

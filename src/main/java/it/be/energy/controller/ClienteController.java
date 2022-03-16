@@ -54,7 +54,7 @@ public class ClienteController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTA: Bisogna inserire indirizzi gia esistenti!")
+	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTE DI FUNZIONAMENTO: Bisogna inserire indirizzi gia esistenti. Le fatture possono essere inserite insieme al cliente e verranno automaticamente salvate. In caso non si vogliano inserire fatture si puo lasciare il campo vuoto o eliminarlo direttamente")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> inserisciCliente(@RequestBody Cliente cliente){
 		clienteservice.inserisciCliente(cliente);
@@ -89,7 +89,7 @@ public class ClienteController {
 	//GET ORDINE
 	
 	@GetMapping("/mostrapernome")
-	@Operation(summary = "Mostra Tutti Clienti Ordinati per Ragione Sociale", description = "Restituisce una lista di tutti i clienti presenti nel sistema, ordinati per nome/ragione sociale")
+	@Operation(summary = "Mostra Tutti Clienti Ordinati per Ragione Sociale", description = "Restituisce una lista di tutti i clienti presenti nel sistema, ordinati per ordine alfabetico tramite nome/ragione sociale")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> mostraClientiPerNome(Pageable pageable){
 		Page<Cliente> found = clienteservice.findAllClientiOrderByName(pageable);
@@ -288,7 +288,7 @@ public class ClienteController {
 	
 	
 	@GetMapping("/trovaperragionesociale/{nome}")
-	@Operation(summary = "Cerca Clienti Con Nome Simile a", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input")
+	@Operation(summary = "Cerca Clienti Con Nome Simile a", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input. NOTA: il metodo è Case Sensitive")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClientePerRagioneSociale(@PathVariable String nome, Pageable pageable){
 		Page<Cliente> found = clienteservice.findByRagioneSocialeContaining(nome, pageable);
