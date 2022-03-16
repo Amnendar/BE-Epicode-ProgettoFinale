@@ -67,6 +67,7 @@ public class Runner implements CommandLineRunner {
 
 	}
 
+	//leggiamo le provincie dal file csv
 	private void initProvincia() throws Exception {
 		try (CSVReader csvReader = new CSVReader(new FileReader("province-italiane_1.csv"));) {
 			String[] values = null;
@@ -93,6 +94,7 @@ public class Runner implements CommandLineRunner {
 		}
 	}
 
+	//leggiamo i comuni dal file csv
 	private void initComune() throws Exception {
 		try (CSVReader csvReader = new CSVReader(new FileReader("comuni-italiani_1.csv"));) {
 			String[] values = null;
@@ -117,10 +119,13 @@ public class Runner implements CommandLineRunner {
 		}
 	}
 
+	//metodo per sostituire caratteri sui file csv
 	private String rimpiazza(String nome) {
 		return nome.replace('-', ' ');
 	}
 
+	//creiamo elementi per popolare il DB
+	@SuppressWarnings("deprecation")
 	private void PopolaDB() throws ParseException {
 
 		// creiamo gli indirizzi
@@ -180,7 +185,11 @@ public class Runner implements CommandLineRunner {
 		Fattura fattura1 = new Fattura();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date data1 = sdf.parse("1999-12-31");
+		Date data1 = sdf.parse("2013-05-12");
+		data1.setHours(12); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
+		data1.setMinutes(30);
+		data1.setSeconds(33);
+		
 
 		fattura1.setAnno(1999);
 		fattura1.setData(data1);
@@ -192,7 +201,10 @@ public class Runner implements CommandLineRunner {
 
 		Fattura fattura2 = new Fattura();
 
-		Date data2 = sdf.parse("2019-8-12");
+		Date data2 = sdf.parse("2019-08-12");
+		data2.setHours(10); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
+		data2.setMinutes(11);
+		data2.setSeconds(49);
 
 		fattura2.setAnno(2019);
 		fattura2.setData(data2);
@@ -204,7 +216,10 @@ public class Runner implements CommandLineRunner {
 
 		Fattura fattura3 = new Fattura();
 
-		Date data3 = sdf.parse("2022-1-10");
+		Date data3 = sdf.parse("2022-01-10");
+		data3.setHours(16); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
+		data3.setMinutes(10);
+		data3.setSeconds(01);
 
 		fattura3.setAnno(2022);
 		fattura3.setData(data3);
@@ -216,6 +231,9 @@ public class Runner implements CommandLineRunner {
 		Fattura fattura4 = new Fattura();
 
 		Date data4 = sdf.parse("2021-02-02");
+		data4.setHours(18); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
+		data4.setMinutes(32);
+		data4.setSeconds(21);
 
 		fattura4.setAnno(2021);
 		fattura4.setData(data4);
@@ -226,6 +244,9 @@ public class Runner implements CommandLineRunner {
 		Fattura fattura5 = new Fattura();
 
 		Date data5 = sdf.parse("2019-07-11");
+		data5.setHours(19); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
+		data5.setMinutes(22);
+		data5.setSeconds(19);
 
 		fattura5.setAnno(2019);
 		fattura5.setData(data5);
@@ -271,7 +292,7 @@ public class Runner implements CommandLineRunner {
 		fattura1.setCliente(cliente1);
 		fattura2.setCliente(cliente1);
 		clienterepo.save(cliente1);
-		;
+		
 
 		// cliente2
 
@@ -297,6 +318,7 @@ public class Runner implements CommandLineRunner {
 		fattura3.setCliente(cliente2);
 		clienterepo.save(cliente2);
 		
+		// cliente3
 		
 		Cliente cliente3 = new Cliente();
 		cliente3.setCognomeContatto("Abul Aziz Mua");
