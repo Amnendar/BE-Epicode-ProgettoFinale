@@ -25,7 +25,7 @@ public class ComuneController {
 	ComuneService comuneservice;
 	
 	@GetMapping("/mostra") 
-	@Operation
+	@Operation(summary = "Mostra Tutti Comuni", description = "Mostra tutti i comuni salvati in sistema")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Comune>> trovaTutti(Pageable pageable){
 		Page<Comune> found = comuneservice.mostraTutte(pageable);
@@ -38,7 +38,7 @@ public class ComuneController {
 	}
 	
 	@GetMapping("/cerca/{id}")
-	@Operation
+	@Operation(summary = "Cerca Comune per Id", description = "Cerca un comune tramite chiave primaria")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Comune> trova(@PathVariable Long id){
 		return new ResponseEntity<>(comuneservice.trova(id), HttpStatus.ACCEPTED);
@@ -46,7 +46,7 @@ public class ComuneController {
 	}
 	
 	@GetMapping("/cercapernome/{nome}")
-	@Operation
+	@Operation(summary = "Cerca Comuni per Nome", description = "Cerca comuni con nome contenente la stringa passata in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Comune>> trova(@PathVariable String nome, Pageable pageable){
 		Page<Comune> found = comuneservice.trovaPerNome(nome, pageable);

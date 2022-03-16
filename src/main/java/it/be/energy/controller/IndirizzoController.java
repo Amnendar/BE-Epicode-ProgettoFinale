@@ -30,7 +30,7 @@ public class IndirizzoController {
 	
 	
 	@GetMapping("/mostra")
-	@Operation()
+	@Operation(summary = "Mostra Tutti Indirizzi", description = "Mostra tutti gli indirizzi salvati nel sistema")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Indirizzo>> mostraIndirizzi(Pageable pageable){
 		Page<Indirizzo> all = indirizzoservice.mostraTuttiIndirizzi(pageable);
@@ -43,7 +43,7 @@ public class IndirizzoController {
 	}
 	
 	@GetMapping("/cerca/{id}")
-	@Operation()
+	@Operation(summary = "Cerca Indirizzo", description = "Cerca indirizzo tramite chiave primaria")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Indirizzo> trovaIndirizzo(@PathVariable Long id){
 		Indirizzo trovato = indirizzoservice.trovaIndirizzo(id);
@@ -52,7 +52,7 @@ public class IndirizzoController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation
+	@Operation(summary = "Inserisci Indirizzo", description = "Permette di inserire un nuovo indirizzo nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Indirizzo> inserisciIndirizzo(@RequestBody Indirizzo Indirizzo){
 		indirizzoservice.inserisciIndirizzo(Indirizzo);
@@ -61,7 +61,7 @@ public class IndirizzoController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation
+	@Operation(summary = "Aggiorna Indirizzo", description = "Permette di aggiornare un'indirizzo presente nel sistema, cercandolo per chiave primaria")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Indirizzo> aggiornaIndirizzo(@PathVariable Long id, @RequestBody Indirizzo aggiorna){
 		indirizzoservice.aggiornaIndirizzo(id, aggiorna);
@@ -69,7 +69,7 @@ public class IndirizzoController {
 	}
 	
 	@DeleteMapping("/cancella/{id}")
-	@Operation
+	@Operation(summary = "Cancella Indirizzo", description = "Permette di cancellare un'indirizzo dal sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> cancellaIndirizzo(@PathVariable Long id){
 		indirizzoservice.cancellaIndirizzo(id);

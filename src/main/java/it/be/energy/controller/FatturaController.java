@@ -48,7 +48,7 @@ public class FatturaController {
 	
 	
 	@GetMapping("/cerca/{id}")
-	@Operation(summary = "Cerca Fattura per id", description = "Cerca una fattura per chiave primaria")
+	@Operation(summary = "Cerca Fattura per id", description = "Cerca una fattura tramite chiave primaria")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Fattura> trovaFattura(@PathVariable Long id){
 		return new ResponseEntity<>(fatturaservice.getFatturaById(id), HttpStatus.ACCEPTED);
@@ -56,7 +56,7 @@ public class FatturaController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Fattura", description = "Permette di inserire una nuova fattura  nel sistema")
+	@Operation(summary = "Inserisci Fattura", description = "Permette di inserire una nuova fattura nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Fattura> inserisciFattura(@RequestBody Fattura fattura){
 		fatturaservice.inserisciFattura(fattura);
@@ -65,7 +65,7 @@ public class FatturaController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation(summary = "Aggiorna Fattura", description = "Permette di aggiornare i dati di una fattura gia presente nel sistema")
+	@Operation(summary = "Aggiorna Fattura", description = "Permette di aggiornare i dati di una fattura già presente nel sistema")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Fattura> aggiornaFattura(@PathVariable Long id, @RequestBody Fattura aggiorna){
 		fatturaservice.aggiornaFattura(id, aggiorna);
@@ -84,7 +84,7 @@ public class FatturaController {
 	//FIND CUSTOM
 	
 	@GetMapping("/cercaragionesociale/{nome}")
-	@Operation(summary = "Cerca per Ragione Sociale", description = "Mostra tutte le fatture tramite la ragione sociale di un cliente")
+	@Operation(summary = "Cerca per Ragione Sociale", description = "Mostra tutte le fatture dei clienti che presentano nel nome/ragione sociale la stringa passata come input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Fattura>> cercaPerRagioneSocialeCliente(@PathVariable String nome, Pageable pageable){
 		Page<Fattura> found = fatturaservice.findByClienteRagioneSocialeLike(pageable, nome);
@@ -98,14 +98,14 @@ public class FatturaController {
 	
 	
 	@GetMapping("/cercaperstato/{idstato}")
-	@Operation(summary = "Cerca per Stato Fattura", description = "Mostra tutte le fatture con lo stato passato in input")
+	@Operation(summary = "Cerca per Stato Fattura", description = "Mostra tutte le fatture con lo stato corrispondente a quello con l'id passato in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<List<Fattura>> trovaPerStato(@PathVariable Long idstato){
 		List<Fattura> found = fatturaservice.findyStato(idstato);
 		return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 	}
 	
-	//TODO mettere a localdate
+	
 	@GetMapping("/cercaperdata/{data}")
 	@Operation(summary = "Cerca per Data Fattura", description = "Permette di cercare le fatture emesse in una determinata data")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
@@ -135,7 +135,7 @@ public class FatturaController {
 	
 	
 	@GetMapping("/cercaperimporti/{min}/{max}")
-	@Operation(summary = "Cerca per Importo Fattura", description = "Mostra le fatture in un  determinato range di importi")
+	@Operation(summary = "Cerca per Importo Fattura", description = "Mostra le fatture in un  determinato range di importi. NOTA: Per il corretto funzionamento, inserire PRIMA l'importo più basso e DOPO quello più alto")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Fattura>> trovaPerImporti(@PathVariable BigDecimal min, @PathVariable BigDecimal max, Pageable pageable){
 		Page<Fattura> found = fatturaservice.findByImportoBetween(pageable, min, max);

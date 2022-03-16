@@ -27,7 +27,7 @@ public class ProvinciaController {
 	
 	
 	@GetMapping("/mostra")
-	@Operation
+	@Operation(summary = "Mostra Tutte Province", description = "Mostra tutte le province presenti nel sistema")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Provincia>> trovaTutte(Pageable pageable){
 		Page<Provincia> found = provinciaservice.mostraTutte(pageable);
@@ -40,7 +40,7 @@ public class ProvinciaController {
 	}
 	
 	@GetMapping("/cerca/{id}")
-	@Operation
+	@Operation(summary = "Cerca Province tramite ID", description = "Permette di cercare le province tramite id")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Provincia> trova(@PathVariable Long id){
 		return new ResponseEntity<>(provinciaservice.trova(id), HttpStatus.ACCEPTED);
@@ -48,7 +48,7 @@ public class ProvinciaController {
 	}
 	
 	@GetMapping("/cercapernome/{nome}")
-	@Operation
+	@Operation(summary = "Cerca Provincia tramite Nome", description = "Permette di cercare le provincie che contengono nel nome la stringa passata in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Provincia>> trova(@PathVariable String nome, Pageable pageable){
 		Page<Provincia> found = provinciaservice.trovaPerNome(pageable, nome);

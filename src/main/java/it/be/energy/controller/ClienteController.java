@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.model.Cliente;
-import it.be.energy.model.Fattura;
 import it.be.energy.service.ClienteService;
 import it.be.energy.service.FatturaService;
 
@@ -175,7 +174,7 @@ public class ClienteController {
 	
 	
 	@GetMapping("/trovaperfatturatominore/{fatturato}")
-	@Operation(summary = "Cerca Clienti Per Fatturato Maggiore o Uguale", description = "Restituisce tutti i clienti con un fatturato maggiore o uguale a quello passato in input")
+	@Operation(summary = "Cerca Clienti Per Fatturato Minore o Uguale", description = "Restituisce tutti i clienti con un fatturato minore o uguale a quello passato in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClienteFatturatoMinoreUguale(@PathVariable BigDecimal fatturato, Pageable pageable){
 		Page<Cliente> found = clienteservice.findByFatturatoAnnualeLessThanEqual(fatturato, pageable);
@@ -189,7 +188,7 @@ public class ClienteController {
 	
 	
 	@GetMapping("/trovaperfatturatotra/{min}/{max}")
-	@Operation(summary = "Cerca Clienti per Fatturato tra 2 parametri", description = "Restituisce tutti i clienti con un fatturato presente tra i due passato in input")
+	@Operation(summary = "Cerca Clienti per Fatturato tra 2 parametri", description = "Restituisce tutti i clienti con un fatturato presente tra i due passati in input. NOTA. Inserire PRIMA l'importo più basso e DOPO quello più alto")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClienteFatturatoTra(@PathVariable BigDecimal min, @PathVariable BigDecimal max,  Pageable pageable){
 		Page<Cliente> found = clienteservice.findByFatturatoAnnualeBetween(min, max, pageable);
@@ -231,7 +230,7 @@ public class ClienteController {
 	
 	
 	@GetMapping("/trovaperdatainserimentotra/{data1}/{data2}")
-	@Operation(summary = "Cerca Clienti Per Data Inserimento Tra ", description = "Restituisce tutti i clienti con data di inserimento tra quelle passate in input")
+	@Operation(summary = "Cerca Clienti Per Data Inserimento Tra ", description = "Restituisce tutti i clienti con data di inserimento tra quelle passate in input. NOTA: Per il corretto funzionamento del metodo, inserire prima la data precedente, e dopo quella successiva")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClienteDataInserimentoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable){
 		Page<Cliente> found = clienteservice.findByDataInserimentoBetween(data1, data2, pageable);
@@ -273,7 +272,7 @@ public class ClienteController {
 	
 
 	@GetMapping("/trovaperdatacontattotra/{data1}/{data2}")
-	@Operation(summary = "Cerca Clienti Per Data Ultimo Contatto Tra ", description = "Restituisce tutti i clienti con data di ultimo contatto presente tra quelle passate in input")
+	@Operation(summary = "Cerca Clienti Per Data Ultimo Contatto Tra ", description = "Restituisce tutti i clienti con data di ultimo contatto presente tra quelle passate in input. NOTA: Per il corretto funzionamento del metodo, inserire prima la data precedente, e dopo quella successiva")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> TrovaClienteDataUltimoContattoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable){
 		Page<Cliente> found = clienteservice.findByDataInserimentoBetween(data1, data2, pageable);
@@ -285,10 +284,8 @@ public class ClienteController {
 		}
 	}
 	
-	
-	
 	@GetMapping("/trovaperragionesociale/{nome}")
-	@Operation(summary = "Cerca Clienti Con Nome Simile a", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input. NOTA: il metodo è Case Sensitive")
+	@Operation(summary = "Cerca Clienti Con Nome Simile a", description = "Restituisce tutti i clienti con ragione sociale che contiene la stringa passata in input. NOTA: il metodo è Case Sensitive")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> trovaClientePerRagioneSociale(@PathVariable String nome, Pageable pageable){
 		Page<Cliente> found = clienteservice.findByRagioneSocialeContaining(nome, pageable);
@@ -303,14 +300,14 @@ public class ClienteController {
 	//metodi extra
 	
 	@PutMapping("/cambiasedelegale/{idCliente}/{idSede}")
-	@Operation(summary = "Cambia Sede Legale", description = "Permette di aggiungere(se non presente) o modificare la sede legale di un cliente, passando gli id del cliente e l id dell indirizzo corrispondenti")
+	@Operation(summary = "Cambia Sede Legale", description = "Permette di aggiungere(se non presente) o modificare la sede legale di un cliente, passando gli id del cliente e l'id dell indirizzo corrispondenti")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> cambiaSedeLegale(@PathVariable Long idCliente, @PathVariable Long idSede){
 		return new ResponseEntity<>(clienteservice.cambiaSedeLegale(idCliente, idSede), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/cambiasedeoperativa/{idCliente}/{idSede}")
-	@Operation(summary = "Cambia Sede Operativa", description = "Permette di aggiungere(se non presente) o modificare la sede operativa di un cliente, passando gli id del cliente e l id dell indirizzo corrispondenti")
+	@Operation(summary = "Cambia Sede Operativa", description = "Permette di aggiungere(se non presente) o modificare la sede operativa di un cliente, passando gli id del cliente e l'id dell indirizzo corrispondenti")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> cambiaSedeOperativa(@PathVariable Long idCliente, @PathVariable Long idSede){
 		return new ResponseEntity<>(clienteservice.cambiaSedeOperativa(idCliente, idSede), HttpStatus.ACCEPTED);
