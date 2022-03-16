@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.FatturaException;
 import it.be.energy.exception.StatoFatturaException;
+import it.be.energy.model.Cliente;
 import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
+import it.be.energy.repository.ClienteRepository;
 import it.be.energy.repository.FatturaRepository;
 import it.be.energy.repository.StatoFatturaRepository;
 
@@ -26,6 +28,9 @@ public class FatturaService {
 	
 	@Autowired
 	StatoFatturaRepository statorepo;
+	
+	@Autowired
+	ClienteRepository clienterepo;
 	
 	
 	public Page<Fattura> mostraFatture(Pageable pageable){
@@ -45,7 +50,15 @@ public class FatturaService {
 	
 	
 	public Fattura inserisciFattura(Fattura fattura) {
-		return fatturarepo.save(fattura);
+		List<Cliente> tutti = clienterepo.findAll();
+		for (Cliente cliente : tutti) {
+			if(fattura.getCliente().getId().equals(cliente.getId())) {
+				return fatturarepo.save(fattura);
+			}
+		}
+		throw new FatturaException("ERRORE! Non puoi assegnare questa fattura ad un ID cliente non esistente!");
+		
+		
 	}
 	
 	

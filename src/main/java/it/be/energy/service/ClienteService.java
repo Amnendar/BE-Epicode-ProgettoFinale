@@ -39,7 +39,7 @@ public class ClienteService {
 	//save cliente
 	public Cliente inserisciCliente(Cliente cliente) {
 		Long idindirizzo1 =cliente.getSedeLegale().getId();
-		Optional<Indirizzo> indirizzo1= indirizzorepo.findById(idindirizzo1);
+		Optional<Indirizzo> indirizzo1= indirizzorepo.findById(idindirizzo1);//gli indirizzi devono essere presenti, quindi controlliamo gli ID
 		if(indirizzo1.isPresent()) {
 			cliente.setSedeLegale(indirizzo1.get());
 			}
@@ -47,16 +47,16 @@ public class ClienteService {
 			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");
 		}
 		Long idindirizzo2 =cliente.getSedeOperativa().getId();
-		Optional<Indirizzo> indirizzo2= indirizzorepo.findById(idindirizzo2);
+		Optional<Indirizzo> indirizzo2= indirizzorepo.findById(idindirizzo2);//gli indirizzi devono essere presenti, quindi controlliamo gli ID
 		if(indirizzo2.isPresent()) {
 			cliente.setSedeOperativa(indirizzo2.get());
 			}
 		else {
 			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");
 			}
-		
-		 clienterepo.save(cliente);
-		 List<Fattura> liste = cliente.getFatture();
+
+		clienterepo.save(cliente);
+		 List<Fattura> liste = cliente.getFatture();//salviamo le eventuali fatture passate assieme al cliente in input
 		 for (Fattura fattura : liste) {
 			fattura.setCliente(cliente);
 		}
@@ -72,7 +72,7 @@ public class ClienteService {
 	public void cancellaClienteById(Long id) {
 		Optional<Cliente> cancella = clienterepo.findById(id);
 		if(cancella.isPresent()) {
-			Cliente cancellato = cancella.get();
+			Cliente cancellato = cancella.get();//scolleghiamo il cliente dai riferimenti su altre tabelle
 			for (Fattura fattura : cancellato.getFatture()) {
 				fattura.setCliente(null);
 			}
