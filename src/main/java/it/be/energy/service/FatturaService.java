@@ -52,7 +52,7 @@ public class FatturaService {
 	public Fattura inserisciFattura(Fattura fattura) {
 		List<Cliente> tutti = clienterepo.findAll();
 		for (Cliente cliente : tutti) {
-			if(fattura.getCliente().getId().equals(cliente.getId())) {
+			if(fattura.getCliente().getId().equals(cliente.getId())) {//se l id cliente corrisponde ad uno presente nel DB procedo al salvataggio
 				return fatturarepo.save(fattura);
 			}
 		}

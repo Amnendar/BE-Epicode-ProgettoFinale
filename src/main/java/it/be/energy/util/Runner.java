@@ -3,15 +3,11 @@ package it.be.energy.util;
 import java.io.FileReader;
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.type.CalendarDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -170,6 +166,25 @@ public class Runner implements CommandLineRunner {
 		indirizzo4.setCap("20330");
 
 		indirizzorepo.save(indirizzo4);
+		
+		Indirizzo indirizzo5 = new Indirizzo();
+		indirizzo5.setVia("Via Sardegna");
+		indirizzo5.setCivico("9");
+		indirizzo5.setComune(milano);
+		indirizzo5.setLocalita("Milano");
+		indirizzo5.setCap("20146");
+		
+		indirizzorepo.save(indirizzo5);
+		
+
+		Indirizzo indirizzo6 = new Indirizzo();
+		indirizzo6.setVia("Viale Certosa");
+		indirizzo6.setCivico("22");
+		indirizzo6.setComune(milano);
+		indirizzo6.setLocalita("Milano");
+		indirizzo6.setCap("20145");
+		
+		indirizzorepo.save(indirizzo6);
 
 		// creiamo gli stati fattura
 
@@ -214,7 +229,7 @@ public class Runner implements CommandLineRunner {
 		fattura3.setAnno(2022);
 		fattura3.setData(data3);
 		fattura3.setImporto(new BigDecimal("300"));
-		fattura3.setNFattura((long) 101);
+		fattura3.setNFattura((long) 122);
 		fattura3.setStato(pagata);
 
 		fatturarepo.save(fattura3);
@@ -226,7 +241,7 @@ public class Runner implements CommandLineRunner {
 		fattura4.setAnno(2021);
 		fattura4.setData(data4);
 		fattura4.setImporto(new BigDecimal("4500"));
-		fattura4.setNFattura((long) 101);
+		fattura4.setNFattura((long) 234);
 		fattura4.setStato(nonpagata);
 		
 		fatturarepo.save(fattura4);
@@ -238,10 +253,25 @@ public class Runner implements CommandLineRunner {
 		fattura5.setAnno(2019);
 		fattura5.setData(data5);
 		fattura5.setImporto(new BigDecimal("5600"));
-		fattura5.setNFattura((long) 101);
+		fattura5.setNFattura((long) 99);
 		fattura5.setStato(nonpagata);
 		
 		fatturarepo.save(fattura5);
+		
+		
+		Fattura fattura6 = new Fattura();
+
+		LocalDate data6 = LocalDate.of(2021, 11, 22);
+
+		fattura6.setAnno(2021);
+		fattura6.setData(data6);
+		fattura6.setImporto(new BigDecimal("10600"));
+		fattura6.setNFattura((long) 2101);
+		fattura6.setStato(pagata);
+		
+		fatturarepo.save(fattura6);
+		
+		
 
 		List<Fattura> fatturecliente1 = new ArrayList<>();
 		fatturecliente1.add(fattura1);
@@ -253,6 +283,11 @@ public class Runner implements CommandLineRunner {
 		List<Fattura> fatturecliente3 = new ArrayList<>();
 		fatturecliente3.add(fattura4);
 		fatturecliente3.add(fattura5);
+		
+		List<Fattura> fatturecliente4 = new ArrayList<>();
+		fatturecliente4.add(fattura6);
+		
+		
 
 		// creiamo i clienti
 
@@ -332,6 +367,34 @@ public class Runner implements CommandLineRunner {
 		clienterepo.save(cliente3);
 		fatturarepo.save(fattura4);
 		fatturarepo.save(fattura5);
+		
+		
+		//cliente 4
+		
+		Cliente cliente4 = new Cliente();
+		cliente4.setCognomeContatto("Viglianisi");
+		cliente4.setDataInserimento(LocalDate.parse("2018-03-18"));
+		cliente4.setDataUltimoContatto(LocalDate.parse("2022-02-20"));
+		cliente4.setEmail("viglianisi.sport@gmail.it");
+		cliente4.setEmailContatto("f.viglianisi@gmail.it");
+		cliente4.setFatturatoAnnuale(new BigDecimal("40000"));
+		cliente4.setFatture(fatturecliente4);
+		cliente4.setNomeContatto("Francesco");
+		cliente4.setPartitaIva("KF3234343");
+		cliente4.setPec("francesco.viglia@pec.it");
+		cliente4.setRagioneSociale("Viglianisi Sport");
+		cliente4.setSedeLegale(indirizzo5);
+		cliente4.setSedeOperativa(indirizzo6);
+		cliente4.setTelefono("0255565644");
+		cliente4.setTelefonoContatto("3292336499");
+		cliente4.setTipoCliente(TipoCliente.SRL);
+
+		fattura6.setCliente(cliente4);
+		
+
+		clienterepo.save(cliente4);
+		fatturarepo.save(fattura6);
+		
 		
 	}
 
