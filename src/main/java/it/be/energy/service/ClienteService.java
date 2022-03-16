@@ -2,6 +2,7 @@ package it.be.energy.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import it.be.energy.model.Fattura;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.repository.ClienteRepository;
 import it.be.energy.repository.ComuneRepository;
+import it.be.energy.repository.FatturaRepository;
 import it.be.energy.repository.IndirizzoRepository;
 
 @Service
@@ -29,6 +31,9 @@ public class ClienteService {
 	
 	@Autowired
 	IndirizzoRepository indirizzorepo;
+	
+	@Autowired
+	FatturaRepository fatturarepo;
 	
 
 	//save cliente
@@ -49,7 +54,17 @@ public class ClienteService {
 		else {
 			throw new IndirizzoException("ERRORE! Nessun indirizzo con questo ID!");
 			}
-		return clienterepo.save(cliente);
+		
+		 clienterepo.save(cliente);
+		 List<Fattura> liste = cliente.getFatture();
+		 for (Fattura fattura : liste) {
+			fattura.setCliente(cliente);
+		}
+		 fatturarepo.saveAll(liste);
+		 clienterepo.save(cliente);
+		 fatturarepo.saveAll(liste);
+		 return cliente;
+		 
 		
 	}
 	
