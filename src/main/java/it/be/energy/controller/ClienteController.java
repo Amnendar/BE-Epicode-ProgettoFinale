@@ -40,7 +40,7 @@ public class ClienteController {
 	//CRUD DI BASE
 	
 	@GetMapping("/mostra")
-	@Operation(summary = "Mostra Tutti Clienti", description = "Restituisce una lista di tutti i clienti presenti nel sistema")
+	@Operation(summary = "Mostra Tutti Clienti", description = "Restituisce tutti i clienti presenti nel sistema")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> mostraClienti(Pageable pageable){
 		Page<Cliente> found = clienteservice.findAllClienti(pageable);

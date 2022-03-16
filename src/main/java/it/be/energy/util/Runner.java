@@ -69,7 +69,7 @@ public class Runner implements CommandLineRunner {
 
 	}
 
-	//leggiamo le provincie dal file csv
+	// leggiamo le provincie dal file csv
 	private void initProvincia() throws Exception {
 		try (CSVReader csvReader = new CSVReader(new FileReader("province-italiane_1.csv"));) {
 			String[] values = null;
@@ -96,7 +96,7 @@ public class Runner implements CommandLineRunner {
 		}
 	}
 
-	//leggiamo i comuni dal file csv
+	// leggiamo i comuni dal file csv
 	private void initComune() throws Exception {
 		try (CSVReader csvReader = new CSVReader(new FileReader("comuni-italiani_1.csv"));) {
 			String[] values = null;
@@ -121,12 +121,12 @@ public class Runner implements CommandLineRunner {
 		}
 	}
 
-	//metodo per sostituire caratteri sui file csv
+	// metodo per sostituire caratteri sui file csv
 	private String rimpiazza(String nome) {
 		return nome.replace('-', ' ');
 	}
 
-	//creiamo elementi per popolare il DB
+	// creiamo elementi per popolare il DB
 	private void PopolaDB() throws ParseException {
 
 		// creiamo gli indirizzi
@@ -160,7 +160,7 @@ public class Runner implements CommandLineRunner {
 		indirizzo3.setCap("00110");
 
 		indirizzorepo.save(indirizzo3);
-		
+
 		Comune milano = comuneservice.trova((long) 1690);
 		Indirizzo indirizzo4 = new Indirizzo();
 		indirizzo4.setVia("Via Monte Napoleone");
@@ -168,7 +168,7 @@ public class Runner implements CommandLineRunner {
 		indirizzo4.setComune(milano);
 		indirizzo4.setLocalita("Milano");
 		indirizzo4.setCap("20330");
-		
+
 		indirizzorepo.save(indirizzo4);
 
 		// creiamo gli stati fattura
@@ -184,9 +184,8 @@ public class Runner implements CommandLineRunner {
 		// creiamo le fatture
 
 		Fattura fattura1 = new Fattura();
-		
+
 		LocalDate data1 = LocalDate.of(2013, 1, 8);
-		
 
 		fattura1.setAnno(1999);
 		fattura1.setData(data1);
@@ -194,8 +193,8 @@ public class Runner implements CommandLineRunner {
 		fattura1.setNFattura((long) 1001);
 		fattura1.setStato(pagata);
 
+		fatturarepo.save(fattura1);
 		
-
 		Fattura fattura2 = new Fattura();
 
 		LocalDate data2 = LocalDate.of(2010, 6, 20);
@@ -205,8 +204,8 @@ public class Runner implements CommandLineRunner {
 		fattura2.setImporto(new BigDecimal("10000.99"));
 		fattura2.setNFattura((long) 2300);
 		fattura2.setStato(pagata);
-
 		
+		fatturarepo.save(fattura2);
 
 		Fattura fattura3 = new Fattura();
 
@@ -217,8 +216,9 @@ public class Runner implements CommandLineRunner {
 		fattura3.setImporto(new BigDecimal("300"));
 		fattura3.setNFattura((long) 101);
 		fattura3.setStato(pagata);
-		
-		
+
+		fatturarepo.save(fattura3);
+
 		Fattura fattura4 = new Fattura();
 
 		LocalDate data4 = LocalDate.of(2021, 11, 29);
@@ -229,6 +229,8 @@ public class Runner implements CommandLineRunner {
 		fattura4.setNFattura((long) 101);
 		fattura4.setStato(nonpagata);
 		
+		fatturarepo.save(fattura4);
+
 		Fattura fattura5 = new Fattura();
 
 		LocalDate data5 = LocalDate.of(2022, 1, 2);
@@ -239,6 +241,7 @@ public class Runner implements CommandLineRunner {
 		fattura5.setNFattura((long) 101);
 		fattura5.setStato(nonpagata);
 		
+		fatturarepo.save(fattura5);
 
 		List<Fattura> fatturecliente1 = new ArrayList<>();
 		fatturecliente1.add(fattura1);
@@ -246,12 +249,10 @@ public class Runner implements CommandLineRunner {
 
 		List<Fattura> fatturecliente2 = new ArrayList<>();
 		fatturecliente2.add(fattura3);
-		
+
 		List<Fattura> fatturecliente3 = new ArrayList<>();
 		fatturecliente3.add(fattura4);
 		fatturecliente3.add(fattura5);
-
-		
 
 		// creiamo i clienti
 
@@ -273,10 +274,11 @@ public class Runner implements CommandLineRunner {
 		cliente1.setTelefonoContatto("3337288321");
 		cliente1.setTipoCliente(TipoCliente.SAS);
 
-		
 		fattura1.setCliente(cliente1);
 		fattura2.setCliente(cliente1);
 		clienterepo.save(cliente1);
+		fatturarepo.save(fattura1);
+		fatturarepo.save(fattura2);
 		
 
 		// cliente2
@@ -299,12 +301,13 @@ public class Runner implements CommandLineRunner {
 		cliente2.setTelefonoContatto("3827466898");
 		cliente2.setTipoCliente(TipoCliente.PA);
 
-
 		fattura3.setCliente(cliente2);
 		clienterepo.save(cliente2);
+		fatturarepo.save(fattura3);
 		
+
 		// cliente3
-		
+
 		Cliente cliente3 = new Cliente();
 		cliente3.setCognomeContatto("Abul Aziz Mua");
 		cliente3.setDataInserimento(LocalDate.parse("2005-04-22"));
@@ -325,10 +328,11 @@ public class Runner implements CommandLineRunner {
 
 		fattura4.setCliente(cliente3);
 		fattura5.setCliente(cliente3);
-		
-		clienterepo.save(cliente3);
-	}
-	
 
+		clienterepo.save(cliente3);
+		fatturarepo.save(fattura4);
+		fatturarepo.save(fattura5);
+		
+	}
 
 }
