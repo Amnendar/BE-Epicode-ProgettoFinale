@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.ClienteException;
+import it.be.energy.exception.FatturaException;
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Cliente;
 import it.be.energy.model.Fattura;
@@ -120,6 +121,19 @@ public class ClienteService {
 			aggiorna.setEmailContatto(cliente.getEmailContatto());
 			aggiorna.setFatturatoAnnuale(cliente.getFatturatoAnnuale());
 			aggiorna.setFatture(cliente.getFatture());
+//			for (Fattura fattura : cliente.getFatture()) {
+//				if(!fattura.getCliente().getId().equals(aggiorna.getId())) {
+//					throw new FatturaException("ERRORE! Non puoi inserire fatture con ID gia assegnati ad altri clienti!");
+//				}
+////				List<Fattura> tutte = fatturarepo.findAll();
+////				for (Fattura fattura2 : tutte) {
+////					if(fattura.getId().equals(fattura2.getId())) {
+////						throw new FatturaException("ERRORE! Non puoi inserire fatture con ID gia esistenti!");
+////					}
+////				}
+//			}
+			
+			fatturarepo.saveAll(cliente.getFatture());
 			aggiorna.setNomeContatto(cliente.getNomeContatto());
 			aggiorna.setPartitaIva(cliente.getPartitaIva());
 			aggiorna.setPec(cliente.getPec());
@@ -130,12 +144,13 @@ public class ClienteService {
 			aggiorna.setTelefonoContatto(cliente.getTelefonoContatto());
 			aggiorna.setTipoCliente(cliente.getTipoCliente());
 			return inserisciCliente(aggiorna);
-			
+		
 		}
 		else {
 			throw new ClienteException("ERRORE! Nessun cliente con questo ID!");
 		}
 	}
+	
 	
 	//get all clienti
 	public Page<Cliente> findAllClienti(Pageable pageable){

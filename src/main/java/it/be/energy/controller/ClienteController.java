@@ -63,7 +63,7 @@ public class ClienteController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente gia presente nel sistema. NOTA: Se vogliamo gli stessi indirizzi, inserire SOLAMENTE gli ID corrispondenti. Le fatture rimangono comunque")
+	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente gia presente nel sistema. NOTA: Se vogliamo gli stessi indirizzi, inserire SOLAMENTE gli ID corrispondenti. Eventuali nuove fatture verranno aggiunte automaticamente a quelle del cliente insieme a quelle gia presenti.NON INSERIRE ID di FATTURE gia ESISTENTI!")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> aggiornaClienti(@PathVariable Long id, @RequestBody Cliente aggiorna){
 		clienteservice.updateCliente(id, aggiorna);

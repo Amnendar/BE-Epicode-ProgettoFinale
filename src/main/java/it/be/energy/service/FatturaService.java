@@ -50,6 +50,9 @@ public class FatturaService {
 	
 	
 	public Fattura inserisciFattura(Fattura fattura) {
+		if(fattura.getCliente().getId()==null) {
+			throw new FatturaException("ERRORE! Devi inserire una ID di un cliente!");
+		}
 		List<Cliente> tutti = clienterepo.findAll();
 		for (Cliente cliente : tutti) {
 			if(fattura.getCliente().getId().equals(cliente.getId())) {//se l id cliente corrisponde ad uno presente nel DB procedo al salvataggio
