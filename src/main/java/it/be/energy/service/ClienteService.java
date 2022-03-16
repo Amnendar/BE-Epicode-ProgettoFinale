@@ -234,7 +234,7 @@ public class ClienteService {
 	}
 	
 	
-	//metodo per collegare un cliente ad uno o piu indirizzi
+	//metodo per aggiungere o 
 	
 	public Cliente cambiaSedeLegale(Long idCliente, Long idIndirizzo) {
 		Optional<Cliente> modifica = clienterepo.findById(idCliente);
@@ -252,6 +252,21 @@ public class ClienteService {
 		return clienterepo.save(trovato);
 	}
 	
+	public Cliente cambiaSedeOperativa(Long idCliente, Long idIndirizzo) {
+		Optional<Cliente> modifica = clienterepo.findById(idCliente);
+		if(!modifica.isPresent()) {
+			throw new ClienteException("ERRORE! Nessun Cliente con questo ID!");
+		}
+		Cliente trovato = modifica.get();
+		Optional<Indirizzo> sede = indirizzorepo.findById(idIndirizzo);
+		if(!sede.isPresent()) {
+			throw new IndirizzoException("ERRORE! Nessun Indirizzo con questo ID!");
+		}
+		Indirizzo sedeOperativa = sede.get();
+		
+		trovato.setSedeOperativa(sedeOperativa);
+		return clienterepo.save(trovato);
+	}
 	
 	
 	

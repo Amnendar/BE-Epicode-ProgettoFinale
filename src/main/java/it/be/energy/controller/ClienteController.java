@@ -303,10 +303,17 @@ public class ClienteController {
 	//metodi extra
 	
 	@PutMapping("/cambiasedelegale/{idCliente}/{idSede}")
-	@Operation(summary = "Cambia Sede Legale", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input. NOTA: il metodo è Case Sensitive")
+	@Operation(summary = "Cambia Sede Legale", description = "Permette di aggiungere(se non presente) o modificare la sede legale di un cliente, passando gli id del cliente e l id dell indirizzo corrispondenti")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> cambiaSedeLegale(@PathVariable Long idCliente, @PathVariable Long idSede){
 		return new ResponseEntity<>(clienteservice.cambiaSedeLegale(idCliente, idSede), HttpStatus.ACCEPTED);
+	}
+	
+	@PutMapping("/cambiasedeoperativa/{idCliente}/{idSede}")
+	@Operation(summary = "Cambia Sede Operativa", description = "Permette di aggiungere(se non presente) o modificare la sede operativa di un cliente, passando gli id del cliente e l id dell indirizzo corrispondenti")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public ResponseEntity<Cliente> cambiaSedeOperativa(@PathVariable Long idCliente, @PathVariable Long idSede){
+		return new ResponseEntity<>(clienteservice.cambiaSedeOperativa(idCliente, idSede), HttpStatus.ACCEPTED);
 	}
 	
 }
