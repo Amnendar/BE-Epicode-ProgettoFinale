@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Cliente;
+import it.be.energy.model.Comune;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.repository.ClienteRepository;
+import it.be.energy.repository.ComuneRepository;
 import it.be.energy.repository.IndirizzoRepository;
 
 @Service
@@ -22,6 +24,9 @@ public class IndirizzoService {
 	
 	@Autowired
 	ClienteRepository clienterepo;
+	
+	@Autowired
+	ComuneRepository comunerepo;
 	
 	
 	
@@ -40,6 +45,7 @@ public class IndirizzoService {
 	}
 	
 	public Indirizzo inserisciIndirizzo(Indirizzo indirizzo) {
+		
 		return indirizzorepo.save(indirizzo);
 	}
 	

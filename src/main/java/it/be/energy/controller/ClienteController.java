@@ -54,7 +54,7 @@ public class ClienteController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTE DI FUNZIONAMENTO: Bisogna inserire indirizzi gia esistenti. Le fatture possono essere inserite insieme al cliente e verranno automaticamente salvate. In caso non si vogliano inserire fatture si puo lasciare il campo vuoto o eliminarlo direttamente")
+	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTE DI FUNZIONAMENTO: Gli indirizzi possono essere o inseriti entrambi(Inserendo gli ID di indirizzi GIA esistenti!) o non inseriti (e possibile aggiungerli in un secondo momento con i metodi 'CambiaSede'). NON e possibile inserire un singolo indirizzo!. Le fatture possono essere inserite insieme al cliente e verranno automaticamente salvate. In caso non si vogliano inserire fatture si puo lasciare il campo vuoto o eliminarlo direttamente")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> inserisciCliente(@RequestBody Cliente cliente){
 		clienteservice.inserisciCliente(cliente);
@@ -271,7 +271,7 @@ public class ClienteController {
 		}
 	}
 	
-	//TODO Ricontrollare
+
 	@GetMapping("/trovaperdatacontattotra/{data1}/{data2}")
 	@Operation(summary = "Cerca Clienti Per Data Ultimo Contatto Tra ", description = "Restituisce tutti i clienti con data di ultimo contatto presente tra quelle passate in input")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
@@ -299,6 +299,14 @@ public class ClienteController {
 			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);
 		}
 	}
-		
+	
+	//metodi extra
+	
+	@PutMapping("/cambiasedelegale/{idCliente}/{idSede}")
+	@Operation(summary = "Cambia Sede Legale", description = "Restituisce tutti i clienti con ragione sociale simile a quella passata in input. NOTA: il metodo è Case Sensitive")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public ResponseEntity<Cliente> cambiaSedeLegale(@PathVariable Long idCliente, @PathVariable Long idSede){
+		return new ResponseEntity<>(clienteservice.cambiaSedeLegale(idCliente, idSede), HttpStatus.ACCEPTED);
+	}
 	
 }

@@ -2,6 +2,7 @@ package it.be.energy.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,9 +36,26 @@ public class ClienteService {
 	@Autowired
 	FatturaRepository fatturarepo;
 	
+	@Autowired
+	IndirizzoService indirizzoservice;
+	
 
 	//save cliente
 	public Cliente inserisciCliente(Cliente cliente) {
+		if(cliente.getSedeLegale() == null && cliente.getSedeOperativa() ==null) {//se gli indirizzi sono null, salviamo il il cliente qua
+			clienterepo.save(cliente);
+			 List<Fattura> liste = cliente.getFatture();//salviamo le eventuali fatture passate assieme al cliente in input
+			 if(liste == null) { //se la lista fatture non esiste salviamo in questo punto il cliente, in quanto una lista a null crea conflitto con le righe successive
+				 return clienterepo.save(cliente);
+			 }
+			 for (Fattura fattura : liste) {
+				fattura.setCliente(cliente);
+			}
+			 fatturarepo.saveAll(liste);
+			 clienterepo.save(cliente);
+			 fatturarepo.saveAll(liste);
+			return clienterepo.save(cliente);
+		}
 		Long idindirizzo1 =cliente.getSedeLegale().getId();
 		Optional<Indirizzo> indirizzo1= indirizzorepo.findById(idindirizzo1);//gli indirizzi devono essere presenti, quindi controlliamo gli ID
 		if(indirizzo1.isPresent()) {
@@ -70,6 +88,7 @@ public class ClienteService {
 		 
 		
 	}
+	
 	
 	//delete cliente
 	public void cancellaClienteById(Long id) {
@@ -110,7 +129,7 @@ public class ClienteService {
 			aggiorna.setTelefono(cliente.getTelefono());
 			aggiorna.setTelefonoContatto(cliente.getTelefonoContatto());
 			aggiorna.setTipoCliente(cliente.getTipoCliente());
-			return clienterepo.save(aggiorna);
+			return inserisciCliente(aggiorna);
 			
 		}
 		else {
@@ -214,6 +233,24 @@ public class ClienteService {
 		return clienterepo.findByRagioneSocialeContaining(nome, pageable);
 	}
 	
+	
+	//metodo per collegare un cliente ad uno o piu indirizzi
+	
+	public Cliente cambiaSedeLegale(Long idCliente, Long idIndirizzo) {
+		Optional<Cliente> modifica = clienterepo.findById(idCliente);
+		if(!modifica.isPresent()) {
+			throw new ClienteException("ERRORE! Nessun Cliente con questo ID!");
+		}
+		Cliente trovato = modifica.get();
+		Optional<Indirizzo> sede = indirizzorepo.findById(idIndirizzo);
+		if(!sede.isPresent()) {
+			throw new IndirizzoException("ERRORE! Nessun Indirizzo con questo ID!");
+		}
+		Indirizzo sedeLegale = sede.get();
+		
+		trovato.setSedeLegale(sedeLegale);
+		return clienterepo.save(trovato);
+	}
 	
 	
 	
