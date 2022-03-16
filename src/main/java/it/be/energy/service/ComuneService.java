@@ -17,25 +17,30 @@ public class ComuneService {
 	@Autowired
 	ComuneRepository comunerepo;
 
-	
-	
-	public Page<Comune> mostraTutte(Pageable pageable){
+	/*
+	 * get di tutti i comuni presenti nel sistema
+	 */
+	public Page<Comune> mostraTutte(Pageable pageable) {
 		return comunerepo.findAll(pageable);
 	}
-	
+
+	/*
+	 * trova comune tramite id
+	 */
 	public Comune trova(Long id) {
 		Optional<Comune> trovato = comunerepo.findById(id);
-		if(trovato.isPresent()) {
+		if (trovato.isPresent()) {// controlliamo che il comune con l'id passato in input esista
 			return trovato.get();
-		}
-		else {
+		} else {// se non esiste nessuno comune con l'id passato in input, lanciamo un'eccezione
 			throw new ComuneException("ERRORE! Nessun comune con questo id!");
 		}
 	}
-	
-	public Page<Comune> trovaPerNome(String nome, Pageable pageable){
+
+	/*
+	 * trova comuni tramite nome
+	 */
+	public Page<Comune> trovaPerNome(String nome, Pageable pageable) {
 		return comunerepo.findByNomeContaining(nome, pageable);
 	}
-	
 
 }

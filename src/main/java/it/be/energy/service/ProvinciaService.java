@@ -19,31 +19,42 @@ public class ProvinciaService {
 	ProvinciaRepository provinciarepo;
 	
 	
-	
+	/*
+	 * metodo che restituisce una Provincia con lo stesso nome passato in input
+	 */
 	public Provincia FromString(String nome) {
 		List<Provincia> all = provinciarepo.findAll();
 		for (Provincia provincia : all) {
 			if(provincia.getNome().equals(nome)) {
-				return provincia;
+				return provincia;//se troviamo una corrispondenza, restituiamo la provincia
 			}
 		}
-		return null;
+		throw new ProvinciaException("ERRORE! Nessuna Provincia con questo nome!");//se non troviamo niente, lanciamo un'eccezione
 	}
 	
+	/*
+	 * get di tutte le province
+	 */
 	public Page<Provincia> mostraTutte(Pageable pageable){
 		return provinciarepo.findAll(pageable);
 	}
 	
+	/*
+	 * get di una provincia tramite id
+	 */
 	public Provincia trova(Long id) {
 		Optional<Provincia> trovato = provinciarepo.findById(id);
-		if(trovato.isPresent()) {
-			return trovato.get();
+		if(trovato.isPresent()) {//controlliamo che la provincia esista
+			return trovato.get();//se esiste la ritorniamo
 		}
-		else {
+		else {//se non esiste lanciamo un'eccezione
 			throw new ProvinciaException("ERRORE! Nessuna Provincia con questo id!");
 		}
 	}
 	
+	/*
+	 * Metodo che ritorna provincie che nel nome presentano la stringa passata in input
+	 */
 	public Page<Provincia> trovaPerNome(Pageable pageable, String nome){
 		return provinciarepo.findByNomeContaining(pageable, nome);
 	}

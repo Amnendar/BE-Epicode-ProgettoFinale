@@ -32,12 +32,16 @@ public class FatturaService {
 	@Autowired
 	ClienteRepository clienterepo;
 	
-	
+	/*
+	 * get di tutte le fatture
+	 */
 	public Page<Fattura> mostraFatture(Pageable pageable){
 		return fatturarepo.findAll(pageable);
 	}
 	
-	
+	/*
+	 * get di una fattura tramite chiave primaria
+	 */
 	public Fattura getFatturaById(Long id) {
 		Optional<Fattura> trovato = fatturarepo.findById(id);
 		if(trovato.isPresent()) {
@@ -48,9 +52,11 @@ public class FatturaService {
 		}
 	}
 	
-	
+	/*
+	 * inserimento di una fattura
+	 */
 	public Fattura inserisciFattura(Fattura fattura) {
-		if(fattura.getCliente().getId()==null) {
+		if(fattura.getCliente().getId()==null) { //controllo se l'id inserito effettivamente esiste
 			throw new FatturaException("ERRORE! Devi inserire una ID di un cliente!");
 		}
 		List<Cliente> tutti = clienterepo.findAll();
@@ -64,21 +70,25 @@ public class FatturaService {
 		
 	}
 	
-	
+	/*
+	 * cancellazione di una fattura
+	 */
 	public void cancellaFattura(Long id) {
 		Optional<Fattura> cancella = fatturarepo.findById(id);
 		if(cancella.isPresent()) {
 			fatturarepo.deleteById(id);
 		}
-		else {
+		else {//se l'id della fattura inserito non esiste, lanciamo un'eccezione
 			throw new FatturaException("ERRORE! Nessuna fattura con questo ID!");
 		}
 	}
 	
-	
+	/*
+	 * aggiornamento di una fattura
+	 */
 	public Fattura aggiornaFattura(Long id, Fattura fattura) {
 		Optional<Fattura> aggiornare = fatturarepo.findById(id);
-		if(aggiornare.isPresent()) {
+		if(aggiornare.isPresent()) {//controlliamo che la fattura sia effettivamente presente
 			Fattura aggiorna = aggiornare.get();
 			aggiorna.setAnno(fattura.getAnno());
 			aggiorna.setCliente(fattura.getCliente());
@@ -93,43 +103,57 @@ public class FatturaService {
 		}
 	}
 	
+	/*
+	 * ricerca di tutte le fatture con un determinato stato, passandogli l'Id di quest'ultimo
+	 */
 	public List<Fattura> findyStato( Long idstato){
-		List<StatoFattura> prova = new ArrayList<>();
-		List<StatoFattura> tutti = statorepo.findAll();
+		List<StatoFattura> prova = new ArrayList<>();//creiamo una lista di appoggio dove inserire l'eventuale stato con Id Stato corrispondente
+		List<StatoFattura> tutti = statorepo.findAll();//creiamo una lista di tutte gli stati fattura presenti nel sistema
 		for (StatoFattura statoFattura : tutti) {
-			if(statoFattura.getId().equals(idstato)) {
+			if(statoFattura.getId().equals(idstato)) {//cicliamo la lista di tutti gli stati, se c'è quello corretto viene aggiunto alla prima lista
 				prova.add(statoFattura);
 			}
 		}
-		if(prova.isEmpty()) {
+		if(prova.isEmpty()) {//se la lista è vuota significa che non esiste nessuno stato con l'Id passaato in input
 			throw new StatoFatturaException("ERRORE! Nessuno stato presente con questo ID!");
 		}
-		List<Fattura> risultato = new ArrayList<>();
-		List<Fattura> tutte = fatturarepo.findAll();
-		for (Fattura fattura : tutte) {
+		List<Fattura> risultato = new ArrayList<>();//creiamo una lista di fatture che conterrà quelle con lo stato corrispondente
+		List<Fattura> tutte = fatturarepo.findAll();//creiamo una lista di tutte le fatture presenti nel sistema
+		for (Fattura fattura : tutte) {//cicliamo tutte le fatture, confrontiamo gli id dello stato delle fatture con quello dello stato al quale facciamo riferimento
 			if(fattura.getStato().getId().equals(idstato)) {
 				risultato.add(fattura);
 			}
 		}
-		if(risultato.isEmpty()) {
+		if(risultato.isEmpty()) {//se la lista è vuota, significa che non è presente nessuna fattura con lo stato richiesto
 			throw new FatturaException("ERRORE! Nessuna fattura con questo stato!");
 		}
 		return risultato;
 	}
 	
-	
+	/*
+	 * trova fatture tramite parte o tutto il nome del cliente
+	 */
 	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome){
 		return fatturarepo.findByClienteRagioneSocialeContaining(pageable, nome);
 	}
 	
+	/*
+	 * trova fatture tramite la data collegata ad esse
+	 */
 	public Page<Fattura> findByData(Pageable pageable, LocalDate data){
 		return fatturarepo.findByData(pageable, data);
 	}
 	
+	/*
+	 * trova fatture tramite l'anno delle stesse
+	 */
 	public Page<Fattura> findByAnno(Pageable pageable, Integer anno){
 		return fatturarepo.findByAnno(pageable, anno);
 	}
 	
+	/*
+	 * trova fatture tra range di importi
+	 */
 	public Page<Fattura> findByImportoBetween(Pageable pageable, BigDecimal minimo, BigDecimal massimo){
 		return fatturarepo.findByImportoBetween(pageable, minimo, massimo);
 	}
