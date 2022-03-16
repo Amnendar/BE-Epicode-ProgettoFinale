@@ -1,7 +1,7 @@
 package it.be.energy.controller;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,7 +109,7 @@ public class FatturaController {
 	@GetMapping("/cercaperdata/{data}")
 	@Operation(summary = "Cerca per Data Fattura", description = "Permette di cercare le fatture emesse in una determinata data")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Page<Fattura>> trovaPerData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date data, Pageable pageable){
+	public ResponseEntity<Page<Fattura>> trovaPerData(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data, Pageable pageable){
 		Page<Fattura> found = fatturaservice.findByData(pageable, data);
 		if(found.hasContent()) {
 			return new ResponseEntity<>(found, HttpStatus.ACCEPTED);

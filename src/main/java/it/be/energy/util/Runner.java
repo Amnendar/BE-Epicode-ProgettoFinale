@@ -6,10 +6,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.type.CalendarDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -125,7 +127,6 @@ public class Runner implements CommandLineRunner {
 	}
 
 	//creiamo elementi per popolare il DB
-	@SuppressWarnings("deprecation")
 	private void PopolaDB() throws ParseException {
 
 		// creiamo gli indirizzi
@@ -183,12 +184,8 @@ public class Runner implements CommandLineRunner {
 		// creiamo le fatture
 
 		Fattura fattura1 = new Fattura();
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date data1 = sdf.parse("2013-05-12");
-		data1.setHours(12); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
-		data1.setMinutes(30);
-		data1.setSeconds(33);
+		
+		LocalDate data1 = LocalDate.of(2013, 1, 8);
 		
 
 		fattura1.setAnno(1999);
@@ -201,10 +198,7 @@ public class Runner implements CommandLineRunner {
 
 		Fattura fattura2 = new Fattura();
 
-		Date data2 = sdf.parse("2019-08-12");
-		data2.setHours(10); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
-		data2.setMinutes(11);
-		data2.setSeconds(49);
+		LocalDate data2 = LocalDate.of(2010, 6, 20);
 
 		fattura2.setAnno(2019);
 		fattura2.setData(data2);
@@ -216,10 +210,7 @@ public class Runner implements CommandLineRunner {
 
 		Fattura fattura3 = new Fattura();
 
-		Date data3 = sdf.parse("2022-01-10");
-		data3.setHours(16); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
-		data3.setMinutes(10);
-		data3.setSeconds(01);
+		LocalDate data3 = LocalDate.of(2020, 9, 18);
 
 		fattura3.setAnno(2022);
 		fattura3.setData(data3);
@@ -230,10 +221,7 @@ public class Runner implements CommandLineRunner {
 		
 		Fattura fattura4 = new Fattura();
 
-		Date data4 = sdf.parse("2021-02-02");
-		data4.setHours(18); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
-		data4.setMinutes(32);
-		data4.setSeconds(21);
+		LocalDate data4 = LocalDate.of(2021, 11, 29);
 
 		fattura4.setAnno(2021);
 		fattura4.setData(data4);
@@ -243,10 +231,7 @@ public class Runner implements CommandLineRunner {
 		
 		Fattura fattura5 = new Fattura();
 
-		Date data5 = sdf.parse("2019-07-11");
-		data5.setHours(19); //l ora viene impostata 2 ore prima di quanto riportato(metodo deprecato)
-		data5.setMinutes(22);
-		data5.setSeconds(19);
+		LocalDate data5 = LocalDate.of(2022, 1, 2);
 
 		fattura5.setAnno(2019);
 		fattura5.setData(data5);

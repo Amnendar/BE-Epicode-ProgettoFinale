@@ -1,7 +1,7 @@
 package it.be.energy.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +28,7 @@ public class Fattura {
 	private Long id;
 	private Long nFattura;
 	private Integer anno;
-	private Date data;
+	private LocalDate data;
 	private BigDecimal importo;
 	@ManyToOne
 	private StatoFattura stato;

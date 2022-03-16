@@ -1,8 +1,8 @@
 package it.be.energy.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,7 +106,7 @@ public class FatturaService {
 		return fatturarepo.findByClienteRagioneSocialeContaining(pageable, nome);
 	}
 	
-	public Page<Fattura> findByData(Pageable pageable, Date data){
+	public Page<Fattura> findByData(Pageable pageable, LocalDate data){
 		return fatturarepo.findByData(pageable, data);
 	}
 	
