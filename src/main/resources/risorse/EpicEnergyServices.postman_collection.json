@@ -1,0 +1,1301 @@
+{
+	"info": {
+		"_postman_id": "328cd426-92d6-4184-b0c5-229844c4ec16",
+		"name": "EpicEnergyServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clienti (testati)",
+			"item": [
+				{
+					"name": "RichiesteOrdinate  (testati)",
+					"item": [
+						{
+							"name": "MostraClientiRagioneSociale",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostrapernome",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostrapernome"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MostraClientiPerFatturato",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostraperfatturato",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostraperfatturato"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MostraClientiPerDataInserimento",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostraperdatainserimento",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostraperdatainserimento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MostraClientiPerUltimoContatto",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostraperultimocontatto",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostraperultimocontatto"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MostraClientiPerProvincia",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostraperprovincia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostraperprovincia"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "RichiesteFiltrate (testati)",
+					"item": [
+						{
+							"name": "CercaPerRagioneSociale",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperragionesociale/ab",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperragionesociale",
+										"ab"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FatturatoMaggioreDi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperfatturatomaggiore/110000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperfatturatomaggiore",
+										"110000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FatturatoMinoreDi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperfatturatominore/30000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperfatturatominore",
+										"30000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FatturatoCompresoTra",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperfatturatotra/2/2500000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperfatturatotra",
+										"2",
+										"2500000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TrovaPerDataInserimentoSuccessivaA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatainserimentodopo/2010-02-02",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatainserimentodopo",
+										"2010-02-02"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TrovaPerDataInserimentoPrimaDi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatainserimentoprima/2000-01-01",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatainserimentoprima",
+										"2000-01-01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DataInserimentoCompresaTra",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatainserimentotra/2006-01-01/2022-03-15",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatainserimentotra",
+										"2006-01-01",
+										"2022-03-15"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DataContattoDopo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatacontattodopo/2022-02-28",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatacontattodopo",
+										"2022-02-28"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DataContattoPrima",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatacontattoprima/2022-03-10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatacontattoprima",
+										"2022-03-10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DataInserimentoCompresaTra",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/trovaperdatacontattotra/1900-01-10/2022-03-18",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"trovaperdatacontattotra",
+										"1900-01-10",
+										"2022-03-18"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CrudBase (testati)",
+					"item": [
+						{
+							"name": "CercaClienteId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzI0NjM0OCwiZXhwIjoxNjQ4MTEwMzQ4fQ.QTz-iO3IRLDh4W63YJ4STs9vXb7ZE4vO5N_ZV-KD76kdhfswKsB-l6DnnAvSp7FHwambyBgwe4cJsJgUgazaLw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/cliente/cerca/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"cerca",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "MostraClienti",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzI0NjM0OCwiZXhwIjoxNjQ4MTEwMzQ4fQ.QTz-iO3IRLDh4W63YJ4STs9vXb7ZE4vO5N_ZV-KD76kdhfswKsB-l6DnnAvSp7FHwambyBgwe4cJsJgUgazaLw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/cliente/mostra",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"mostra"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "InserisciCliente",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzI0NjM0OCwiZXhwIjoxNjQ4MTEwMzQ4fQ.QTz-iO3IRLDh4W63YJ4STs9vXb7ZE4vO5N_ZV-KD76kdhfswKsB-l6DnnAvSp7FHwambyBgwe4cJsJgUgazaLw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n  \"ragioneSociale\": \"23 SAS\",\r\n  \"partitaIva\": \"D32334343\",\r\n  \"tipoCliente\": \"SAS\",\r\n  \"email\": \"strin23g@string.it\",\r\n  \"dataInserimento\": \"2022-03-16\",\r\n  \"dataUltimoContatto\": \"2022-03-16\",\r\n  \"fatturatoAnnuale\": 200000,\r\n  \"pec\": \"string@pec.it\",\r\n  \"telefono\": \"323233434\",\r\n  \"emailContatto\": \"string@string.it\",\r\n  \"nomeContatto\": \"Holly\",\r\n  \"cognomeContatto\": \"String\",\r\n  \"telefonoContatto\": \"33434534343\",\r\n  \"sedeLegale\": {\r\n    \"id\": 1\r\n    }\r\n  ,\r\n  \"sedeOperativa\": {\r\n    \"id\": 4\r\n    },\r\n  \"fatture\":[\r\n\r\n      {\r\n  \"anno\": 2022,\r\n  \"data\": \"2022-03-15\",\r\n  \"importo\": 3000,\r\n  \"stato\": {\r\n    \"id\": 5\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1\r\n  },\r\n    \"nfattura\": 211\r\n  }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cliente/inserisci",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"inserisci"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CancellaCliente",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzI0NjM0OCwiZXhwIjoxNjQ4MTEwMzQ4fQ.QTz-iO3IRLDh4W63YJ4STs9vXb7ZE4vO5N_ZV-KD76kdhfswKsB-l6DnnAvSp7FHwambyBgwe4cJsJgUgazaLw",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/cliente/cancella/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"cancella",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ModificaCliente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"id\":4,\r\n  \"ragioneSociale\": \"Tabolacci 2\",\r\n  \"partitaIva\": \"strin2g\",\r\n  \"tipoCliente\": \"PA\",\r\n  \"email\": \"string\",\r\n  \"dataInserimento\": \"2022-03-15\",\r\n  \"dataUltimoContatto\": \"2022-03-15\",\r\n  \"fatturatoAnnuale\": 0,\r\n  \"pec\": \"st2ring\",\r\n  \"telefono\": \"st2ring\",\r\n  \"emailContatto\": \"st2ring\",\r\n  \"nomeContatto\": \"stri323ng\",\r\n  \"cognomeContatto\": \"string\",\r\n  \"telefonoContatto\": \"st23ing\",\r\n  \"sedeLegale\": {\r\n    \"id\": 1\r\n    }\r\n  ,\r\n  \"sedeOperativa\": {\r\n    \"id\": 1\r\n    },\r\n    \"fatture\": []\r\n\r\n \r\n    \r\n    \r\n\r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cliente/modifica/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"modifica",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Metodi Extra (testati)",
+					"item": [
+						{
+							"name": "CambiaSedeLegale",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/cambiasedelegale/6/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"cambiasedelegale",
+										"6",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CambioSedeOperativa",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/cliente/cambiasedeoperativa/8/56",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"cambiasedeoperativa",
+										"8",
+										"56"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "StatoFattura (testati)",
+			"item": [
+				{
+					"name": "MostraStatoFatture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statofattura/mostra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statofattura",
+								"mostra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InserisciStato",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n  \"stato\": \"Mezzi e Mezzi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/statofattura/inserisci",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statofattura",
+								"inserisci"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModificaStato",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 5,\r\n  \"stato\": \"Asdrubale\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/statofattura/modifica/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statofattura",
+								"modifica",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CancellaStato",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statofattura/cancella/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statofattura",
+								"cancella",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CercaStatoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/statofattura/cerca/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"statofattura",
+								"cerca",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fattura (testati)",
+			"item": [
+				{
+					"name": "CrudBase (testati)",
+					"item": [
+						{
+							"name": "MostraFattura",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/mostra",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"mostra"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AggiornaFattura",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \r\n  \"anno\": 2221,\r\n  \"data\": \"2021-02-13\",\r\n  \"importo\": 20222,\r\n  \"stato\": {\r\n    \"id\": 5\r\n    \r\n  },\r\n  \"cliente\": {\r\n    \"id\": 2\r\n    \r\n    \r\n  },\r\n  \"nfattura\": 30\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/fattura/modifica/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"modifica",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CercaFatturaId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cerca/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cerca",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CancellaFattura",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cancella/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cancella",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "InserisciFattura",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"anno\": 2022,\r\n  \"data\": \"2022-03-15\",\r\n  \"importo\": 3000,\r\n  \"stato\": {\r\n    \"id\": 5\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 4\r\n  },\r\n    \"nfattura\": 211\r\n  }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/fattura/inserisci",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"inserisci"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CercaPer (testati)",
+					"item": [
+						{
+							"name": "CercaFatturePerRagioneSociale",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cercaragionesociale/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cercaragionesociale",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CercaPerStatoId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 5\r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/fattura/cercaperstato/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cercaperstato",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CercaPerAnno",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cercaperanno/2022",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cercaperanno",
+										"2022"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CercaRangeImporti",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cercaperimporti/1/3000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cercaperimporti",
+										"1",
+										"3000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CercaPerData",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/fattura/cercaperdata/2021-11-29",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"fattura",
+										"cercaperdata",
+										"2021-11-29"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Indirizzo (testati)",
+			"item": [
+				{
+					"name": "MostraTutti",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/indirizzo/mostra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"indirizzo",
+								"mostra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CercaIndirizzoId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/indirizzo/cerca/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"indirizzo",
+								"cerca",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InserisciIndirizzo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"via\": \"Via del Melograno\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 43\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/indirizzo/inserisci",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"indirizzo",
+								"inserisci"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AggiornaIndirizzo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"via\": \"Via del Cocomero\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 43\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/indirizzo/modifica/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"indirizzo",
+								"modifica",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CancellaIndirizzo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/indirizzo/cancella/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"indirizzo",
+								"cancella",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Provincia (testati)",
+			"item": [
+				{
+					"name": "MostraProvincie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/provincia/mostra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"provincia",
+								"mostra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CercaPerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/provincia/cerca/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"provincia",
+								"cerca",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CercaPerNome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/provincia/cercapernome/Roma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"provincia",
+								"cercapernome",
+								"Roma"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Security/Autenticazione (testati)",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"userName\": \"admin\",\r\n\"password\": \"admin\"\r\n\r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CercaUtentePerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegistrazioneUtente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userName\": \"string\",\r\n  \"password\": \"string\",\r\n  \"nome\": \"Lorenzo\",\r\n  \"cognome\": \"De Ceglie\",\r\n  \"mail\": \"strin@string.com\",\r\n  \"roles\": [\r\n    \"ADMIN\"\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comune (testati)",
+			"item": [
+				{
+					"name": "MostraComuni",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comune/mostra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comune",
+								"mostra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ComuneCerca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comune/cerca/9000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comune",
+								"cerca",
+								"9000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ComuneCercaPerNome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comune/cercapernome/Cuneo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comune",
+								"cercapernome",
+								"Cuneo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzQyODUwNSwiZXhwIjoxNjQ4MjkyNTA1fQ.9M81r0EF8VUi6fGrkG6b5xXgUXbCMTO3BHnxNZrBclxrh3ZFEzurxgC2GzefoilZd39mT6Pm-jYIOl-LeEZ_mA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
