@@ -137,7 +137,7 @@ public class ClienteService {
 			aggiorna.setTelefono(cliente.getTelefono());
 			aggiorna.setTelefonoContatto(cliente.getTelefonoContatto());
 			aggiorna.setTipoCliente(cliente.getTipoCliente());
-			return inserisciCliente(aggiorna);
+			return inserisciCliente(aggiorna);//ritorniamo i dati del cliente
 		
 		}
 		else {//se il cliente non esiste, lanciamo un'eccezione

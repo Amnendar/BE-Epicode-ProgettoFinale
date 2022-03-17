@@ -226,7 +226,7 @@ public class Runner implements CommandLineRunner {
 
 		LocalDate data3 = LocalDate.of(2020, 9, 18);
 
-		fattura3.setAnno(2022);
+		fattura3.setAnno(2020);
 		fattura3.setData(data3);
 		fattura3.setImporto(new BigDecimal("300"));
 		fattura3.setNFattura((long) 122);

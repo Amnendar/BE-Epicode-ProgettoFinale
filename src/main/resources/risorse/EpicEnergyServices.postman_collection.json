@@ -122,7 +122,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperragionesociale/ab",
+									"raw": "http://localhost:8080/cliente/trovaperragionesociale/orc",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -131,7 +131,7 @@
 									"path": [
 										"cliente",
 										"trovaperragionesociale",
-										"ab"
+										"orc"
 									]
 								}
 							},
@@ -445,7 +445,7 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/cliente/cancella/4",
+									"raw": "http://localhost:8080/cliente/cancella/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -454,7 +454,7 @@
 									"path": [
 										"cliente",
 										"cancella",
-										"4"
+										"5"
 									]
 								}
 							},
@@ -475,7 +475,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/cliente/modifica/4",
+									"raw": "http://localhost:8080/cliente/modifica/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -484,7 +484,7 @@
 									"path": [
 										"cliente",
 										"modifica",
-										"4"
+										"5"
 									]
 								}
 							},
@@ -501,7 +501,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/cambiasedelegale/6/4",
+									"raw": "http://localhost:8080/cliente/cambiasedelegale/1/4",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -510,7 +510,7 @@
 									"path": [
 										"cliente",
 										"cambiasedelegale",
-										"6",
+										"1",
 										"4"
 									]
 								}
@@ -523,7 +523,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/cambiasedeoperativa/8/56",
+									"raw": "http://localhost:8080/cliente/cambiasedeoperativa/1/2",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -532,8 +532,8 @@
 									"path": [
 										"cliente",
 										"cambiasedeoperativa",
-										"8",
-										"56"
+										"1",
+										"2"
 									]
 								}
 							},
@@ -652,7 +652,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/statofattura/cerca/5",
+							"raw": "http://localhost:8080/statofattura/cerca/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -661,7 +661,7 @@
 							"path": [
 								"statofattura",
 								"cerca",
-								"5"
+								"7"
 							]
 						}
 					},
@@ -710,7 +710,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/fattura/modifica/2",
+									"raw": "http://localhost:8080/fattura/modifica/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -719,7 +719,7 @@
 									"path": [
 										"fattura",
 										"modifica",
-										"2"
+										"5"
 									]
 								}
 							},
@@ -731,7 +731,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cerca/7",
+									"raw": "http://localhost:8080/fattura/cerca/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -740,7 +740,7 @@
 									"path": [
 										"fattura",
 										"cerca",
-										"7"
+										"5"
 									]
 								}
 							},
@@ -752,7 +752,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cancella/2",
+									"raw": "http://localhost:8080/fattura/cancella/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -761,7 +761,7 @@
 									"path": [
 										"fattura",
 										"cancella",
-										"2"
+										"5"
 									]
 								}
 							},
@@ -807,7 +807,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaragionesociale/",
+									"raw": "http://localhost:8080/fattura/cercaragionesociale/iglianisi",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -816,7 +816,7 @@
 									"path": [
 										"fattura",
 										"cercaragionesociale",
-										""
+										"iglianisi"
 									]
 								}
 							},
@@ -840,7 +840,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaperstato/6",
+									"raw": "http://localhost:8080/fattura/cercaperstato/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -849,7 +849,7 @@
 									"path": [
 										"fattura",
 										"cercaperstato",
-										"6"
+										"5"
 									]
 								}
 							},
@@ -952,7 +952,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/indirizzo/cerca/1",
+							"raw": "http://localhost:8080/indirizzo/cerca/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -961,7 +961,7 @@
 							"path": [
 								"indirizzo",
 								"cerca",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -1003,7 +1003,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": 0,\r\n  \"via\": \"Via del Cocomero\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 43\r\n  }\r\n}",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"via\": \"Via del Cocomero\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 120\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1011,7 +1011,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/indirizzo/modifica/4",
+							"raw": "http://localhost:8080/indirizzo/modifica/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1020,7 +1020,7 @@
 							"path": [
 								"indirizzo",
 								"modifica",
-								"4"
+								"7"
 							]
 						}
 					},
@@ -1032,7 +1032,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/indirizzo/cancella/1",
+							"raw": "http://localhost:8080/indirizzo/cancella/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1041,7 +1041,7 @@
 							"path": [
 								"indirizzo",
 								"cancella",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -1078,7 +1078,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/provincia/cerca/5",
+							"raw": "http://localhost:8080/provincia/cerca/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1087,7 +1087,7 @@
 							"path": [
 								"provincia",
 								"cerca",
-								"5"
+								"7"
 							]
 						}
 					},
@@ -1154,7 +1154,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/user/4",
+							"raw": "http://localhost:8080/api/user/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1163,7 +1163,7 @@
 							"path": [
 								"api",
 								"user",
-								"4"
+								"7"
 							]
 						}
 					},
@@ -1229,7 +1229,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/comune/cerca/9000",
+							"raw": "http://localhost:8080/comune/cerca/5300",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1238,7 +1238,7 @@
 							"path": [
 								"comune",
 								"cerca",
-								"9000"
+								"5300"
 							]
 						}
 					},
@@ -1250,7 +1250,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/comune/cercapernome/Cuneo",
+							"raw": "http://localhost:8080/comune/cercapernome/Frosinone",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1259,7 +1259,7 @@
 							"path": [
 								"comune",
 								"cercapernome",
-								"Cuneo"
+								"Frosinone"
 							]
 						}
 					},
@@ -1273,7 +1273,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzQyODUwNSwiZXhwIjoxNjQ4MjkyNTA1fQ.9M81r0EF8VUi6fGrkG6b5xXgUXbCMTO3BHnxNZrBclxrh3ZFEzurxgC2GzefoilZd39mT6Pm-jYIOl-LeEZ_mA",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzUzMjIwNSwiZXhwIjoxNjQ4Mzk2MjA1fQ.dTQegaR7WZT0mL1deAk9WKXtm_WhVih1ltXOoMMwFgJdixnyB7qLJKZTUewHbtDWOnnvc76ug9jNqZkAcivoJQ",
 				"type": "string"
 			}
 		]
