@@ -2,22 +2,48 @@
 ## Contenuti
 * [Introduzione](#introduzione)
 * [Tecnologie](#tecnologie)
+* [Sicurezza](#sicurezza)
 * [Spiegazione](#spiegazione)
 * [Link Utili](#link)
 * [Testing](#test)
 
 ## Introduzione
 Questo progetto consiste in un'applicazione (a scopo didattico, comprensiva solo di lato Back-End) per la gestione di un sistema di clienti per un'azienda di fornitura energetica, collegata ad un DataBase SQL. 
-NOTA. Il sistema già presenta alcune entità nel database per eventuali test.
+
+Abbiamo anche aggiunto un sistema di autenticazione basato su token JWT. Bisogna essere autenticati per accedere ai metodi. 
+NOTA. Il sistema già presenta alcune entità nel database per eventuali test, oltre che a 2 utenti di default (user e admin).
 	
 ## Tecnologie
 Il progetto è stato creato usando:
 * Java + Spring Boot
 * PostegreSQL
+* Spring Security + Token JWT
 * JUnit
 * Maven 
 * Git (GitHub)
 * Comprensivo di Swagger e OpenApi per la documentazione 
+
+## Tecnologie
+Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati(è possibile effettuare una registrazione utente):
+
+MODEL UTENTE PARAMETRIZZATO
+```
+{
+  "userName": "Lorece",
+  "password": "provapassword",
+  "nome": "Lorenzo",
+  "cognome": "De Ceglie",
+  "mail": "strin@string.com",
+  "roles": [
+    "USER"
+  ]
+}
+```
+
+Anche gli utenti/user vengono salvati sul database, le password vengono criptate usando BCrypt Password Encoder.
+
+Gli utenti sono divisi in Admin e User. Gli utenti con ruolo User possono soltanto accedere ai metodi di visualizzazione, i metodi di modifica/aggiorna/cancella sono disponibili soltanto per gli admin. Un utente può avere entrambi i ruoli contemporanemente.
+
 	
 ## Spiegazione
 L'applicazione viene utilizzata per la gestione delle seguenti entità:
@@ -27,6 +53,7 @@ L'applicazione viene utilizzata per la gestione delle seguenti entità:
 * Indirizzi
 * Comuni
 * Province
+* User(Autenticazione)
 
 Le entità vengono salvate sul database con un valore numerico(Long) come chiave primaria.
 
