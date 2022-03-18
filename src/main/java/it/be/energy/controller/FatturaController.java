@@ -147,6 +147,16 @@ public class FatturaController {
 		}
 	}
 	
+	//METODI EXTRA
+	
+	@PutMapping("/cambiastato/{idfattura}/{idstato}")
+	@Operation(summary = "Cambia Stato Fattura", description = "Permette di aggionare lo stato di una fattura, come primo parametro passiamo l'id della fattura da modificare, come secondo l'id dello stato, se le id corrispondono lo stato della fattura verrà aggiornato")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+	public ResponseEntity<Fattura> cambiaStato(@PathVariable Long idfattura, @PathVariable Long idstato){
+		return new ResponseEntity<>(fatturaservice.cambiaStato(idfattura, idstato), HttpStatus.ACCEPTED);
+	}
+	
+	
 	
 	
 	

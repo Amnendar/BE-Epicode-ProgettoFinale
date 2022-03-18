@@ -161,7 +161,24 @@ public class FatturaService {
 		return fatturarepo.findByImportoBetween(pageable, minimo, massimo);
 	}
 	
-	
+	//metodi extra
+	/*
+	 * cambia stato fattura
+	 */
+	public Fattura cambiaStato(Long idFattura, Long idStato) {
+		Optional<Fattura> trovata = fatturarepo.findById(idFattura);
+		if(!trovata.isPresent()) {//controlliamo se una fattura con questo is esista
+			throw new FatturaException("ERRORE! Nessuna fattura con questo ID!");
+		}
+		Optional<StatoFattura> trovato = statorepo.findById(idStato);
+		if(!trovato.isPresent()) {//controlliamo se uno stato fattura con questo id esista
+			throw new StatoFatturaException("ERRORE! Nessun stato fattura con questo ID!");
+		}
+		Fattura fattura = trovata.get();
+		StatoFattura stato = trovato.get();
+		fattura.setStato(stato);//settiamo alla fattura il nuovo stato
+		return fatturarepo.save(fattura);//salviamo la fattura col nuovo stato
+	}
 	
 	
 }
