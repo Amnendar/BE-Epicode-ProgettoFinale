@@ -202,7 +202,7 @@ public class Runner implements CommandLineRunner {
 
 		LocalDate data1 = LocalDate.of(2013, 1, 8);
 
-		fattura1.setAnno(1999);
+		fattura1.setAnno(2013);
 		fattura1.setData(data1);
 		fattura1.setImporto(new BigDecimal("2000"));
 		fattura1.setNFattura((long) 1001);
@@ -212,7 +212,7 @@ public class Runner implements CommandLineRunner {
 		
 		Fattura fattura2 = new Fattura();
 
-		LocalDate data2 = LocalDate.of(2010, 6, 20);
+		LocalDate data2 = LocalDate.of(2019, 6, 20);
 
 		fattura2.setAnno(2019);
 		fattura2.setData(data2);
@@ -250,7 +250,7 @@ public class Runner implements CommandLineRunner {
 
 		LocalDate data5 = LocalDate.of(2022, 1, 2);
 
-		fattura5.setAnno(2019);
+		fattura5.setAnno(2022);
 		fattura5.setData(data5);
 		fattura5.setImporto(new BigDecimal("5600"));
 		fattura5.setNFattura((long) 99);
