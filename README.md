@@ -23,7 +23,7 @@ Il progetto è stato creato usando:
 * Git (GitHub)
 * Comprensivo di Swagger e OpenApi per la documentazione 
 
-## Tecnologie
+## Sicurezza
 Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati(è possibile effettuare una registrazione utente):
 
 MODEL UTENTE PARAMETRIZZATO
