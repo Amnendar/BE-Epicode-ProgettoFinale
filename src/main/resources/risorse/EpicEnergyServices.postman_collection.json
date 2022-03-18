@@ -122,7 +122,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperragionesociale/orc",
+									"raw": "http://localhost:8080/cliente/trovaperragionesociale/r\\",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -131,7 +131,8 @@
 									"path": [
 										"cliente",
 										"trovaperragionesociale",
-										"orc"
+										"r",
+										""
 									]
 								}
 							},
@@ -143,7 +144,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperfatturatomaggiore/110000",
+									"raw": "http://localhost:8080/cliente/trovaperfatturatomaggiore/40000",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -152,7 +153,7 @@
 									"path": [
 										"cliente",
 										"trovaperfatturatomaggiore",
-										"110000"
+										"40000"
 									]
 								}
 							},
@@ -164,7 +165,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperfatturatominore/30000",
+									"raw": "http://localhost:8080/cliente/trovaperfatturatominore/20000",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -173,7 +174,7 @@
 									"path": [
 										"cliente",
 										"trovaperfatturatominore",
-										"30000"
+										"20000"
 									]
 								}
 							},
@@ -185,7 +186,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperfatturatotra/2/2500000",
+									"raw": "http://localhost:8080/cliente/trovaperfatturatotra/100/200000",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -194,8 +195,8 @@
 									"path": [
 										"cliente",
 										"trovaperfatturatotra",
-										"2",
-										"2500000"
+										"100",
+										"200000"
 									]
 								}
 							},
@@ -249,7 +250,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperdatainserimentotra/2006-01-01/2022-03-15",
+									"raw": "http://localhost:8080/cliente/trovaperdatainserimentotra/2006-01-01/2020-03-15",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -259,7 +260,7 @@
 										"cliente",
 										"trovaperdatainserimentotra",
 										"2006-01-01",
-										"2022-03-15"
+										"2020-03-15"
 									]
 								}
 							},
@@ -308,12 +309,12 @@
 							"response": []
 						},
 						{
-							"name": "DataInserimentoCompresaTra",
+							"name": "DataContattoCompresaTra",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/trovaperdatacontattotra/1900-01-10/2022-03-18",
+									"raw": "http://localhost:8080/cliente/trovaperdatacontattotra/2027-02-10/2022-03-20",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -322,8 +323,8 @@
 									"path": [
 										"cliente",
 										"trovaperdatacontattotra",
-										"1900-01-10",
-										"2022-03-18"
+										"2027-02-10",
+										"2022-03-20"
 									]
 								}
 							},
@@ -410,7 +411,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n   \r\n  \"ragioneSociale\": \"23 SAS\",\r\n  \"partitaIva\": \"D32334343\",\r\n  \"tipoCliente\": \"SAS\",\r\n  \"email\": \"strin23g@string.it\",\r\n  \"dataInserimento\": \"2022-03-16\",\r\n  \"dataUltimoContatto\": \"2022-03-16\",\r\n  \"fatturatoAnnuale\": 200000,\r\n  \"pec\": \"string@pec.it\",\r\n  \"telefono\": \"323233434\",\r\n  \"emailContatto\": \"string@string.it\",\r\n  \"nomeContatto\": \"Holly\",\r\n  \"cognomeContatto\": \"String\",\r\n  \"telefonoContatto\": \"33434534343\",\r\n  \"sedeLegale\": {\r\n    \"id\": 1\r\n    }\r\n  ,\r\n  \"sedeOperativa\": {\r\n    \"id\": 4\r\n    },\r\n  \"fatture\":[\r\n\r\n      {\r\n  \"anno\": 2022,\r\n  \"data\": \"2022-03-15\",\r\n  \"importo\": 3000,\r\n  \"stato\": {\r\n    \"id\": 5\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1\r\n  },\r\n    \"nfattura\": 211\r\n  }\r\n  ]\r\n}\r\n",
+									"raw": "{\r\n   \r\n  \"ragioneSociale\": \"No Indirizzi SAS\",\r\n  \"partitaIva\": \"D32334343\",\r\n  \"tipoCliente\": \"SAS\",\r\n  \"email\": \"strin23g@string.it\",\r\n  \"dataInserimento\": \"2022-03-16\",\r\n  \"dataUltimoContatto\": \"2022-03-16\",\r\n  \"fatturatoAnnuale\": 200000,\r\n  \"pec\": \"string@pec.it\",\r\n  \"telefono\": \"323233434\",\r\n  \"emailContatto\": \"string@string.it\",\r\n  \"nomeContatto\": \"Holly\",\r\n  \"cognomeContatto\": \"String\",\r\n  \"telefonoContatto\": \"33434534343\",\r\n  \"sedeLegale\": {\r\n    \"id\": 1\r\n    }\r\n  ,\r\n  \"sedeOperativa\": {\r\n    \"id\": 4\r\n    },\r\n  \"fatture\":[\r\n\r\n      {\r\n  \"anno\": 2022,\r\n  \"data\": \"2022-03-15\",\r\n  \"importo\": 3000,\r\n  \"stato\": {\r\n    \"id\": 5\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1\r\n  },\r\n    \"nfattura\": 211\r\n  }\r\n  ]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -467,7 +468,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n   \"id\":4,\r\n  \"ragioneSociale\": \"Tabolacci 2\",\r\n  \"partitaIva\": \"strin2g\",\r\n  \"tipoCliente\": \"PA\",\r\n  \"email\": \"string\",\r\n  \"dataInserimento\": \"2022-03-15\",\r\n  \"dataUltimoContatto\": \"2022-03-15\",\r\n  \"fatturatoAnnuale\": 0,\r\n  \"pec\": \"st2ring\",\r\n  \"telefono\": \"st2ring\",\r\n  \"emailContatto\": \"st2ring\",\r\n  \"nomeContatto\": \"stri323ng\",\r\n  \"cognomeContatto\": \"string\",\r\n  \"telefonoContatto\": \"st23ing\",\r\n  \"sedeLegale\": {\r\n    \"id\": 1\r\n    }\r\n  ,\r\n  \"sedeOperativa\": {\r\n    \"id\": 1\r\n    },\r\n    \"fatture\": []\r\n\r\n \r\n    \r\n    \r\n\r\n  \r\n}",
+									"raw": "{\r\n   \"id\":4,\r\n  \"ragioneSociale\": \"Tabolacci 2\",\r\n  \"partitaIva\": \"strin2g\",\r\n  \"tipoCliente\": \"PA\",\r\n  \"email\": \"string\",\r\n  \"dataInserimento\": \"2022-03-15\",\r\n  \"dataUltimoContatto\": \"2022-03-15\",\r\n  \"fatturatoAnnuale\": 0,\r\n  \"pec\": \"st2ring\",\r\n  \"telefono\": \"st2ring\",\r\n  \"emailContatto\": \"st2ring\",\r\n  \"nomeContatto\": \"stri323ng\",\r\n  \"cognomeContatto\": \"string\",\r\n  \"telefonoContatto\": \"st23ing\",\r\n  \r\n    \"fatture\": []\r\n\r\n \r\n    \r\n    \r\n\r\n  \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -501,7 +502,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/cambiasedelegale/1/4",
+									"raw": "http://localhost:8080/cliente/cambiasedelegale/6/1",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -510,8 +511,8 @@
 									"path": [
 										"cliente",
 										"cambiasedelegale",
-										"1",
-										"4"
+										"6",
+										"1"
 									]
 								}
 							},
@@ -523,7 +524,7 @@
 								"method": "PUT",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/cliente/cambiasedeoperativa/1/2",
+									"raw": "http://localhost:8080/cliente/cambiasedeoperativa/6/3",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -532,8 +533,8 @@
 									"path": [
 										"cliente",
 										"cambiasedeoperativa",
-										"1",
-										"2"
+										"6",
+										"3"
 									]
 								}
 							},
@@ -652,7 +653,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/statofattura/cerca/7",
+							"raw": "http://localhost:8080/statofattura/cerca/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -661,7 +662,7 @@
 							"path": [
 								"statofattura",
 								"cerca",
-								"7"
+								"6"
 							]
 						}
 					},
@@ -702,7 +703,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \r\n  \"anno\": 2221,\r\n  \"data\": \"2021-02-13\",\r\n  \"importo\": 20222,\r\n  \"stato\": {\r\n    \"id\": 5\r\n    \r\n  },\r\n  \"cliente\": {\r\n    \"id\": 2\r\n    \r\n    \r\n  },\r\n  \"nfattura\": 30\r\n}",
+									"raw": "{\r\n  \r\n  \"anno\": 2221,\r\n  \"data\": \"2021-02-13\",\r\n  \"importo\": 20222,\r\n  \"stato\": {\r\n    \"id\": 5\r\n    \r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1\r\n    \r\n    \r\n  },\r\n  \"nfattura\": 30\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -807,7 +808,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaragionesociale/iglianisi",
+									"raw": "http://localhost:8080/fattura/cercaragionesociale/Sport",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -816,7 +817,7 @@
 									"path": [
 										"fattura",
 										"cercaragionesociale",
-										"iglianisi"
+										"Sport"
 									]
 								}
 							},
@@ -840,7 +841,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaperstato/5",
+									"raw": "http://localhost:8080/fattura/cercaperstato/6",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -849,7 +850,7 @@
 									"path": [
 										"fattura",
 										"cercaperstato",
-										"5"
+										"6"
 									]
 								}
 							},
@@ -861,7 +862,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaperanno/2022",
+									"raw": "http://localhost:8080/fattura/cercaperanno/2009",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -870,7 +871,7 @@
 									"path": [
 										"fattura",
 										"cercaperanno",
-										"2022"
+										"2009"
 									]
 								}
 							},
@@ -882,7 +883,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/fattura/cercaperimporti/1/3000",
+									"raw": "http://localhost:8080/fattura/cercaperimporti/1000/30000",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -891,8 +892,8 @@
 									"path": [
 										"fattura",
 										"cercaperimporti",
-										"1",
-										"3000"
+										"1000",
+										"30000"
 									]
 								}
 							},
@@ -952,7 +953,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/indirizzo/cerca/7",
+							"raw": "http://localhost:8080/indirizzo/cerca/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -961,7 +962,7 @@
 							"path": [
 								"indirizzo",
 								"cerca",
-								"7"
+								"8"
 							]
 						}
 					},
@@ -1003,7 +1004,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": 0,\r\n  \"via\": \"Via del Cocomero\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 120\r\n  }\r\n}",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"via\": \"Via della Banana\",\r\n  \"civico\": \"2\",\r\n  \"localita\": \"Bussoleno\",\r\n  \"cap\": \"01344\",\r\n  \"comune\": {\r\n    \"id\": 120\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1032,7 +1033,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/indirizzo/cancella/7",
+							"raw": "http://localhost:8080/indirizzo/cancella/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1041,7 +1042,7 @@
 							"path": [
 								"indirizzo",
 								"cancella",
-								"7"
+								"8"
 							]
 						}
 					},
@@ -1078,7 +1079,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/provincia/cerca/7",
+							"raw": "http://localhost:8080/provincia/cerca/99",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1087,7 +1088,7 @@
 							"path": [
 								"provincia",
 								"cerca",
-								"7"
+								"99"
 							]
 						}
 					},
@@ -1099,7 +1100,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/provincia/cercapernome/Roma",
+							"raw": "http://localhost:8080/provincia/cercapernome/Caltanissetta",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1108,7 +1109,7 @@
 							"path": [
 								"provincia",
 								"cercapernome",
-								"Roma"
+								"Caltanissetta"
 							]
 						}
 					},
@@ -1229,7 +1230,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/comune/cerca/5300",
+							"raw": "http://localhost:8080/comune/cerca/5199",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1238,7 +1239,7 @@
 							"path": [
 								"comune",
 								"cerca",
-								"5300"
+								"5199"
 							]
 						}
 					},
@@ -1250,7 +1251,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/comune/cercapernome/Frosinone",
+							"raw": "http://localhost:8080/comune/cercapernome/Villafranca",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1259,7 +1260,7 @@
 							"path": [
 								"comune",
 								"cercapernome",
-								"Frosinone"
+								"Villafranca"
 							]
 						}
 					},
@@ -1273,7 +1274,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzUzMjIwNSwiZXhwIjoxNjQ4Mzk2MjA1fQ.dTQegaR7WZT0mL1deAk9WKXtm_WhVih1ltXOoMMwFgJdixnyB7qLJKZTUewHbtDWOnnvc76ug9jNqZkAcivoJQ",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0NzYwMDY3OSwiZXhwIjoxNjQ4NDY0Njc5fQ.knbxdGss_4rr-35bNhBXgjfFaUMHv9Z5Aa9K8w4JEmvV3S5HE4TnEoRuY9hl2l7aBasBF9n_7wvKTjFDLz6bOA",
 				"type": "string"
 			}
 		]
