@@ -117,6 +117,8 @@ Lo Stato di una fattura è stato realizzato come un entità a sé stante, compre
   "stato": "Da Inviare"
 }
 ```
+NOTA. Con i dati di default, abbiamo due stati salvati rispettivamente con Id 5(Pagata) e 6(Non Pagata). La scelta di crearla come entità lascia la possibilità di aggiornare, inserire o eliminare gli stati già esistenti.
+
 Rimangono gli indirizzi, come visto ogni cliente ne ha due (sede legale e sede operativa, che possono corrispondere al medesimo indirizzo)
 ```
 {
