@@ -89,7 +89,9 @@ ESEMPIO DI BODY JSON PER INSERIMENTO
   "fatture":[]
 }
 ```
-Alla creazione di un cliente bisogna o passare entrambi gli indirizzi tramite gli ID di questi, o non passarne nessuno per poi aggiungerli coi metodi appositi in seguito. Eventuali fatture possono essere aggiunte assieme al cliente durante la sua creazione.
+Alla creazione di un cliente bisogna o passare entrambi gli indirizzi tramite gli ID di questi, o non passarne nessuno per poi aggiungerli coi metodi appositi in seguito(Per comodità sono stati aggiunti due metodi per modificare direttamente gli indirizzi singolarmente, invece del'update generale di cliente). 
+
+Eventuali fatture possono essere aggiunte assieme al cliente durante la sua creazione(Anche durante il suo aggiornamento, dove verranno aggiunte a quelle già presenti).
 
 ESEMPIO DI BODY JSON PER FATTURA
 ```
@@ -117,7 +119,7 @@ Lo Stato di una fattura è stato realizzato come un entità a sé stante, compre
   "stato": "Da Inviare"
 }
 ```
-NOTA. Con i dati di default, abbiamo due stati salvati rispettivamente con Id 5(Pagata) e 6(Non Pagata). La scelta di crearla come entità lascia la possibilità di aggiornare, inserire o eliminare gli stati già esistenti.
+NOTA. Con i dati di default, abbiamo due stati salvati rispettivamente con Id 5(Pagata) e 6(Non Pagata). La scelta di crearla come entità lascia la possibilità di aggiornare, inserire o eliminare gli stati già esistenti. è stato aggiunto un metodo per aggiornare lo stato di una fattura direttamente, invece del classico update.
 
 Rimangono gli indirizzi, come visto ogni cliente ne ha due (sede legale e sede operativa, che possono corrispondere al medesimo indirizzo)
 ```
@@ -131,7 +133,7 @@ Rimangono gli indirizzi, come visto ogni cliente ne ha due (sede legale e sede o
   }
 }
 ```
-Il comune viene passato tramite l'ID corrispondente. In caso di dubbi, ci sono metodi get per cercarli.
+Il comune viene passato tramite l'ID corrispondente. In caso di dubbi, ci sono metodi get(per Id e per Nome) per cercarli.
 
 Comune e Provincie sono entità che vengono caricate direttamente da due file .CSV presenti. Sono comprensive di nome, sigle e collegate tra loro (ogni Provincia è collegata alla propria lista di Comuni, ogni Comune è collegato alla propria provincia).
 
@@ -142,7 +144,7 @@ https://www.getpostman.com/collections/449eb38720e1a4a216fd
 
 NOTA. La collezione è anche inclusa fisicamente nel progetto, assieme ad un backup per un db di prova(nella cartella src/main/resources/risorse)
 
-Esempio di link di accesso a Swagger(Per la documentazione)
+Esempio di link di accesso a Swagger(Per la documentazione):
 http://localhost:8080/swagger-ui/index.html#/
 
 ## Test
