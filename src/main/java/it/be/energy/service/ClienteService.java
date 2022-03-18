@@ -1,6 +1,7 @@
 package it.be.energy.service;
 
 import java.math.BigDecimal;
+import java.sql.SQLDataException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -222,6 +223,9 @@ public class ClienteService {
 	 * find all clienti con fatturato tra 	
 	 */
 	public Page<Cliente> findByFatturatoAnnualeBetween(BigDecimal iniziale, BigDecimal finale, Pageable pageable ){
+		if(iniziale.compareTo(finale)>0) {//controlliamo se il valore iniziale sia maggiore di quello finale
+			throw new ArithmeticException("ERRORE! il valore iniziale non può essere maggiore del valore finale!");
+		}
 			return clienterepo.findByFatturatoAnnualeBetween(iniziale, finale, pageable);
 	}
 	
@@ -242,7 +246,10 @@ public class ClienteService {
 	/*
 	 * find clienti con data inserimento tra
 	 */
-	public Page<Cliente> findByDataInserimentoBetween(LocalDate inizio, LocalDate fine, Pageable pageable){
+	public Page<Cliente> findByDataInserimentoBetween(LocalDate inizio, LocalDate fine, Pageable pageable) throws Exception{
+		if(inizio.isAfter(fine)) {//controlliamo che la data iniziale non sia successiva a quella finale, in quanto il metodo non funzionerebbe
+			throw new Exception("ERRORE! La data iniziale non può essere successiva a quella finale! ");
+		}
 		return clienterepo.findByDataInserimentoBetween(inizio, fine, pageable);
 	}
 	
@@ -263,7 +270,10 @@ public class ClienteService {
 	/*
 	 * find clienti con data ultimo contatto tra
 	 */
-	public Page<Cliente> findByDataUltimoContattoBetween(LocalDate inizio, LocalDate fine, Pageable pageable){
+	public Page<Cliente> findByDataUltimoContattoBetween(LocalDate inizio, LocalDate fine, Pageable pageable) throws Exception{
+		if(inizio.isAfter(fine)) {//controlliamo che la data iniziale non sia successiva a quella finale, in quanto il metodo non funzionerebbe
+			throw new Exception("ERRORE! La data iniziale non può essere successiva a quella finale! ");
+		}
 		return clienterepo.findByDataUltimoContattoBetween(inizio, fine, pageable);
 	}
 	

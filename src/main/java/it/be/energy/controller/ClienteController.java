@@ -53,7 +53,7 @@ public class ClienteController {
 	
 	
 	@PostMapping("/inserisci")
-	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTE DI FUNZIONAMENTO: Gli indirizzi possono essere o inseriti entrambi(Inserendo gli ID di indirizzi GIA esistenti!) o non inseriti (e possibile aggiungerli in un secondo momento con i metodi 'CambiaSede'). NON e possibile inserire un singolo indirizzo!. Le fatture possono essere inserite insieme al cliente e verranno automaticamente salvate. In caso non si vogliano inserire fatture si puo lasciare il campo vuoto o eliminarlo direttamente")
+	@Operation(summary = "Inserisci Cliente", description = "Permette di inserire un nuovo cliente nel sistema. NOTE DI FUNZIONAMENTO: Gli indirizzi possono essere o inseriti entrambi(Inserendo gli ID di indirizzi GIA esistenti!) o non inseriti (è possibile aggiungerli in un secondo momento con i metodi 'CambiaSede'). NON è possibile inserire un singolo indirizzo!. Le fatture possono essere inserite insieme al cliente e verranno automaticamente salvate. In caso non si vogliano inserire fatture si puo lasciare il campo vuoto o eliminarlo direttamente")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> inserisciCliente(@RequestBody Cliente cliente){
 		clienteservice.inserisciCliente(cliente);
@@ -62,7 +62,7 @@ public class ClienteController {
 	
 	
 	@PutMapping("/modifica/{id}")
-	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente gia presente nel sistema. NOTA: Se vogliamo gli stessi indirizzi, inserire SOLAMENTE gli ID corrispondenti. Eventuali nuove fatture verranno aggiunte automaticamente a quelle del cliente insieme a quelle gia presenti(Anche se rimane consigliato crearle nell'apposito Controller Fatture).NON INSERIRE ID di FATTURE gia ESISTENTI!")
+	@Operation(summary = "Aggiorna Cliente", description = "Permette di aggiornare i dati di un cliente già presente nel sistema. NOTA: Se vogliamo gli stessi indirizzi, inserire SOLAMENTE gli ID corrispondenti. Eventuali nuove fatture verranno aggiunte automaticamente a quelle del cliente insieme a quelle già presenti(Anche se rimane consigliato crearle nell'apposito Controller Fatture).NON INSERIRE ID di FATTURE gia ESISTENTI!")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> aggiornaClienti(@PathVariable Long id, @RequestBody Cliente aggiorna){
 		clienteservice.updateCliente(id, aggiorna);
@@ -70,7 +70,7 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/cancella/{id}")
-	@Operation(summary = "Cancella Cliente", description = "Permette di cancellare un cliente dal sistema, tramite chiave primaria")
+	@Operation(summary = "Cancella Cliente", description = "Permette di cancellare un cliente dal sistema, tramite chiave primaria. NOTA. Eventuali fatture collegate al cliente rimarranno comunque nel sistema!")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> cancellaCliente(@PathVariable Long id){
 		clienteservice.cancellaClienteById(id);
@@ -130,7 +130,7 @@ public class ClienteController {
 	
 	
 	@GetMapping("/mostraperultimocontatto")
-	@Operation(summary = "Mostra Tutti Clienti Ordinati per Data Ultimo Contatto", description = "Restituisce una lista di tutti i clienti presenti nel sistema, ordinati per data ultimo contatto")
+	@Operation(summary = "Mostra Tutti Clienti Ordinati per Data Ultimo Contatto", description = "Restituisce una lista di tutti i clienti presenti nel sistema, ordinati per data di ultimo contatto")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> mostraClientiPerDataUltimoContatto(Pageable pageable){
 		Page<Cliente> found = clienteservice.findAllClientiOrderByDataUltimoContatto(pageable);
@@ -232,7 +232,7 @@ public class ClienteController {
 	@GetMapping("/trovaperdatainserimentotra/{data1}/{data2}")
 	@Operation(summary = "Cerca Clienti Per Data Inserimento Tra ", description = "Restituisce tutti i clienti con data di inserimento tra quelle passate in input. NOTA: Per il corretto funzionamento del metodo, inserire prima la data precedente, e dopo quella successiva")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Page<Cliente>> trovaClienteDataInserimentoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable){
+	public ResponseEntity<Page<Cliente>> trovaClienteDataInserimentoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable) throws Exception{
 		Page<Cliente> found = clienteservice.findByDataInserimentoBetween(data1, data2, pageable);
 		if(found.isEmpty()) {
 			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
@@ -274,7 +274,7 @@ public class ClienteController {
 	@GetMapping("/trovaperdatacontattotra/{data1}/{data2}")
 	@Operation(summary = "Cerca Clienti Per Data Ultimo Contatto Tra ", description = "Restituisce tutti i clienti con data di ultimo contatto presente tra quelle passate in input. NOTA: Per il corretto funzionamento del metodo, inserire prima la data precedente, e dopo quella successiva")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-	public ResponseEntity<Page<Cliente>> TrovaClienteDataUltimoContattoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable){
+	public ResponseEntity<Page<Cliente>> TrovaClienteDataUltimoContattoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable) throws Exception{
 		Page<Cliente> found = clienteservice.findByDataInserimentoBetween(data1, data2, pageable);
 		if(found.isEmpty()) {
 			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
@@ -300,14 +300,14 @@ public class ClienteController {
 	//metodi extra
 	
 	@PutMapping("/cambiasedelegale/{idCliente}/{idSede}")
-	@Operation(summary = "Cambia Sede Legale", description = "Permette di aggiungere(se non presente) o modificare la sede legale di un cliente, passando gli id del cliente e l'id dell indirizzo corrispondenti")
+	@Operation(summary = "Cambia Sede Legale", description = "Permette di aggiungere(se non presente) o modificare la sede legale di un cliente, passando gli id del cliente e l'id dell'indirizzo corrispondenti")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> cambiaSedeLegale(@PathVariable Long idCliente, @PathVariable Long idSede){
 		return new ResponseEntity<>(clienteservice.cambiaSedeLegale(idCliente, idSede), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/cambiasedeoperativa/{idCliente}/{idSede}")
-	@Operation(summary = "Cambia Sede Operativa", description = "Permette di aggiungere(se non presente) o modificare la sede operativa di un cliente, passando gli id del cliente e l'id dell indirizzo corrispondenti")
+	@Operation(summary = "Cambia Sede Operativa", description = "Permette di aggiungere(se non presente) o modificare la sede operativa di un cliente, passando gli id del cliente e l'id dell'indirizzo corrispondenti")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<Cliente> cambiaSedeOperativa(@PathVariable Long idCliente, @PathVariable Long idSede){
 		return new ResponseEntity<>(clienteservice.cambiaSedeOperativa(idCliente, idSede), HttpStatus.ACCEPTED);

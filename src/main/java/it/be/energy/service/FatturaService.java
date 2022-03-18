@@ -155,6 +155,9 @@ public class FatturaService {
 	 * trova fatture tra range di importi
 	 */
 	public Page<Fattura> findByImportoBetween(Pageable pageable, BigDecimal minimo, BigDecimal massimo){
+		if(minimo.compareTo(massimo)>0) {//controlliamo se il valore iniziale sia maggiore di quello finale
+			throw new ArithmeticException("ERRORE! il valore iniziale non può essere maggiore del valore finale!");
+		}
 		return fatturarepo.findByImportoBetween(pageable, minimo, massimo);
 	}
 	
