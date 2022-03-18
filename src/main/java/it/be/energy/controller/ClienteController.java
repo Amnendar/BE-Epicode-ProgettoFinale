@@ -275,7 +275,7 @@ public class ClienteController {
 	@Operation(summary = "Cerca Clienti Per Data Ultimo Contatto Tra ", description = "Restituisce tutti i clienti con data di ultimo contatto presente tra quelle passate in input. NOTA: Per il corretto funzionamento del metodo, inserire prima la data precedente, e dopo quella successiva")
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public ResponseEntity<Page<Cliente>> TrovaClienteDataUltimoContattoTra(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data1, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data2, Pageable pageable) throws Exception{
-		Page<Cliente> found = clienteservice.findByDataInserimentoBetween(data1, data2, pageable);
+		Page<Cliente> found = clienteservice.findByDataUltimoContattoBetween(data1, data2, pageable);
 		if(found.isEmpty()) {
 			return new ResponseEntity<>(found, HttpStatus.NO_CONTENT);
 		}
