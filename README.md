@@ -8,7 +8,7 @@
 * [Testing](#test)
 
 ## Introduzione
-Questo progetto consiste in un'applicazione (a scopo didattico, comprensiva solo di lato Back-End) per la gestione di un sistema di clienti per un'azienda di fornitura energetica, collegata ad un DataBase SQL. 
+Questo progetto consiste in un'applicazione (a scopo di esempio, comprensiva solo di lato Back-End) per la gestione di un sistema di clienti (CRM) per un'azienda di fornitura energetica, collegata ad un DataBase SQL. 
 
 Abbiamo anche aggiunto un sistema di autenticazione basato su token JWT. Bisogna essere autenticati per accedere ai metodi. 
 NOTA. Il sistema già presenta alcune entità nel database per eventuali test, oltre che a 2 utenti di default (user e admin).
