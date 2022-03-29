@@ -128,7 +128,7 @@ public class ClienteService {
 			aggiorna.setEmailContatto(cliente.getEmailContatto());
 			aggiorna.setFatturatoAnnuale(cliente.getFatturatoAnnuale());
 			aggiorna.setFatture(cliente.getFatture());
-			fatturarepo.saveAll(cliente.getFatture());//TODO controllare se effettivamente serve
+			fatturarepo.saveAll(cliente.getFatture());
 			aggiorna.setNomeContatto(cliente.getNomeContatto());
 			aggiorna.setPartitaIva(cliente.getPartitaIva());
 			aggiorna.setPec(cliente.getPec());
